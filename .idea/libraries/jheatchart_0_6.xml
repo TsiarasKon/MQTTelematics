@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jheatchart-0.6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jheatchart-0.6/jheatchart-0.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
