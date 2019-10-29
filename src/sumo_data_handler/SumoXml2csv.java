@@ -27,10 +27,15 @@ public class SumoXml2csv {
     private int meanRSSI = 60;
     private int stdRSSI = 40;
     private int maxLinkCapacity = 50;     // in Mbps
+
     private Random random;
+    private int minRSSI;
+    private int maxRSSI;
 
     public SumoXml2csv() {
         random = new Random();
+        minRSSI = meanRSSI - stdRSSI;
+        maxRSSI = meanRSSI + stdRSSI;
     }
 
     public double getMin_lat() {
@@ -96,10 +101,13 @@ public class SumoXml2csv {
     private int getRSSI() {
         int gNum = (int) (random.nextGaussian() * stdRSSI) + meanRSSI;
         // TODO: different handling of corner values?
-        if (gNum < meanRSSI - stdRSSI) {
-            gNum = meanRSSI - stdRSSI;
-        } else if (gNum > meanRSSI + stdRSSI) {
-            gNum = meanRSSI + stdRSSI;
+//        if (gNum < minRSSI) {
+//            gNum = minRSSI;
+//        } else if (gNum > maxRSSI) {
+//            gNum = maxRSSI;
+//        }
+        if (gNum < minRSSI || gNum > maxRSSI) {
+            return getRSSI();
         }
         return gNum;
     }
