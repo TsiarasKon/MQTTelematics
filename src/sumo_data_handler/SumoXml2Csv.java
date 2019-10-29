@@ -19,11 +19,11 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.Random;
 
-public class SumoXml2csv {
-    private double min_lat = 37.9668800;
-    private double max_lat = 37.9686200;
-    private double min_lon = 23.7647600;
-    private double max_lon = 23.7753900;
+public class SumoXml2Csv {
+    private double min_lat;
+    private double max_lat;
+    private double min_lon;
+    private double max_lon;
     private int meanRSSI = 60;
     private int stdRSSI = 40;
     private int maxLinkCapacity = 50;     // in Mbps
@@ -32,7 +32,11 @@ public class SumoXml2csv {
     private int minRSSI;
     private int maxRSSI;
 
-    public SumoXml2csv() {
+    public SumoXml2Csv(double min_lat, double max_lat, double min_lon, double max_lon) {
+        this.min_lat = min_lat;
+        this.max_lat = max_lat;
+        this.min_lon = min_lon;
+        this.max_lon = max_lon;
         random = new Random();
         minRSSI = meanRSSI - stdRSSI;
         maxRSSI = meanRSSI + stdRSSI;
