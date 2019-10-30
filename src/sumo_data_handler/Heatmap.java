@@ -11,19 +11,19 @@ import java.io.IOException;
 public class Heatmap {
     private int heightCells;
     private int widthCells;
-    private Color lowColor;
-    private Color highColor;
-    private float overlayOpacity;
+    private double[][] cellMap;
 
-    public Heatmap(int heightCells, int widthCells, Color lowColor, Color highColor) {
+    private Color lowColor = Color.red;
+    private Color highColor = Color.green;
+    private float overlayOpacity = 0.5f;
+
+    public Heatmap(int heightCells, int widthCells, double[][] cellMap) {
         this.heightCells = heightCells;
         this.widthCells = widthCells;
-        this.lowColor = lowColor;
-        this.highColor = highColor;
-        this.overlayOpacity = 0.5f;
+        this.cellMap = cellMap;
     }
 
-    public void generateHeatmap(String mapFilepath, String outputDirpath) {
+    public void generateHeatmap(String mapFilepath, String outputFilepath) {
 
         BufferedImage baseMap;
         try {
@@ -33,14 +33,13 @@ public class Heatmap {
             return;
         }
 
-        // TODO: generate actual data after reading vehicles.csv
-        // dummy data here:
-        double[][] data = new double[][]{{3,2,7,4,5,6,4,5,3,7},
-                {2,3,4,5,6,7,7,3,6,5},
-                {3,4,5,6,7,6,5,4,3,3},
-                {4,5,6,4,6,5,3,7,7,4}};
+//        // dummy data here:
+//        double[][] data = new double[][]{{3,2,7,4,5,6,4,5,3,7},
+//                {2,3,4,5,6,7,7,3,6,5},
+//                {3,4,5,6,7,6,5,4,3,3},
+//                {4,5,6,4,6,5,3,7,7,4}};
 
-        HeatChart map = new HeatChart(data);
+        HeatChart map = new HeatChart(cellMap);
         map.setLowValueColour(lowColor);
         map.setHighValueColour(highColor);
         map.setCellSize(new Dimension(baseMap.getWidth() / widthCells, baseMap.getHeight() / heightCells));
@@ -63,12 +62,11 @@ public class Heatmap {
         g2.setComposite(AlphaComposite.SrcOver.derive(overlayOpacity));
         g2.drawImage(map.getChartImage(), 0, 0, null);
         g2.dispose();
-        String overlayedMapFilePath = outputDirpath + "overlayedMap.png";
-        File outputfile = new File(overlayedMapFilePath);
+        File outputfile = new File(outputFilepath);
         try {
             ImageIO.write(baseMap, "png", outputfile);
         } catch (IOException e) {
-            System.err.println("Failed to create '" + overlayedMapFilePath + "'");
+            System.err.println("Failed to create '" + outputFilepath + "'");
             e.printStackTrace();
         }
     }

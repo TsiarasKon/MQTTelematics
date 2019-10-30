@@ -104,26 +104,20 @@ public class SumoXml2Csv {
 
     private int getRSSI() {
         int gNum = (int) (random.nextGaussian() * stdRSSI) + meanRSSI;
-        // TODO: different handling of corner values?
-//        if (gNum < minRSSI) {
-//            gNum = minRSSI;
-//        } else if (gNum > maxRSSI) {
-//            gNum = maxRSSI;
-//        }
         if (gNum < minRSSI || gNum > maxRSSI) {
             return getRSSI();
         }
         return gNum;
     }
 
-    private double getThrouhput(int currRSSI) {
+    private double getThroughput(int currRSSI) {
         return (currRSSI / 100.0) * maxLinkCapacity;
     }
 
-    public void xml2csvConvert(String xmlFilepath, String outputDirpath) {
-        String csvFilepath = outputDirpath + xmlFilepath.substring(xmlFilepath.lastIndexOf('/') + 1, xmlFilepath.lastIndexOf('.')) + ".csv";
+    public void xml2csvConvert(String xmlFilepath, String csvFilepath) {
+        FileWriter csvWriter = null;
         try {
-            FileWriter csvWriter = new FileWriter(csvFilepath);
+            csvWriter = new FileWriter(csvFilepath);
             File xmlVehiclesFile = new File(xmlFilepath);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -153,7 +147,7 @@ public class SumoXml2Csv {
                             csvWriter.append(tsElement.getAttribute("time") + ',' + vElement.getAttribute("id")
                                     + ',' + lat + ',' + lon + ',' + vElement.getAttribute("angle") + ',' +
                                     vElement.getAttribute("speed") + ',' + currRSSI + ','
-                                    + String.format(Locale.US, "%.1f", getThrouhput(currRSSI)) + '\n');
+                                    + String.format(Locale.US, "%.1f", getThroughput(currRSSI)) + '\n');
                         }
                     }
                 }
@@ -166,6 +160,14 @@ public class SumoXml2Csv {
         } catch (IOException e) {
             System.err.println("Encountered an unexpected error generating '" + csvFilepath + "'");
             e.printStackTrace();
+        } finally {
+            if (csvWriter != null) {
+                try {
+                    csvWriter.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
