@@ -128,19 +128,19 @@ public class SumoCsvReader {
             }
         }
         // For debugging:
-        for (int i = 0; i < heightCells; i++) {
-            for (int j = 0; j < widthCells; j++) {
-                System.out.print(String.format(Locale.US, "%5.2f", rssiCellMap[i][j]) + " ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-        for (int i = 0; i < heightCells; i++) {
-            for (int j = 0; j < widthCells; j++) {
-                System.out.print(String.format(Locale.US, "%5.2f", throughputCellMap[i][j]) + " ");
-            }
-            System.out.println();
-        }
+//        for (int i = 0; i < heightCells; i++) {
+//            for (int j = 0; j < widthCells; j++) {
+//                System.out.print(String.format(Locale.US, "%5.2f", rssiCellMap[i][j]) + " ");
+//            }
+//            System.out.println();
+//        }
+//        System.out.println();
+//        for (int i = 0; i < heightCells; i++) {
+//            for (int j = 0; j < widthCells; j++) {
+//                System.out.print(String.format(Locale.US, "%5.2f", throughputCellMap[i][j]) + " ");
+//            }
+//            System.out.println();
+//        }
     }
 
 }

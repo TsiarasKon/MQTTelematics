@@ -1,8 +1,15 @@
 package main;
 
+import edge_server.ESSubscriber;
+import edge_server.EdgeServer;
 import sumo_data_handler.Heatmap;
 import sumo_data_handler.SumoCsvReader;
 import sumo_data_handler.SumoXml2Csv;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.eclipse.paho.client.mqttv3.MqttException;
 
 public class Main {
     private static final String[] vehiclesXmlPaths;
@@ -41,23 +48,46 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println("Converting XML files to CSV ...");
-        SumoXml2Csv sumoConverter = new SumoXml2Csv(min_lat, max_lat, min_lon, max_lon);
-        sumoConverter.xml2csvConvert(vehiclesXmlPaths[0], outputVehiclesCsvPaths[0]);
-        sumoConverter.xml2csvConvert(vehiclesXmlPaths[1], outputVehiclesCsvPaths[1]);
-        sumoConverter.xml2csvConvert(vehiclesXmlPaths[2], outputVehiclesCsvPaths[2]);
+        List<String> argsList = Arrays.asList(args);
 
-        System.out.println("Loading data from '" + outputVehiclesCsvPaths[0] + "' ...");
-        SumoCsvReader sumoReader = new SumoCsvReader(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells);
-        sumoReader.readCsv(outputVehiclesCsvPaths[0]);
+        if (argsList.isEmpty() || argsList.contains("-h")) {
+            System.out.println("Available options:");
+            System.out.println(" -c : Convert XML files to CSV");
+            System.out.println(" -g : Generate heatmaps from CSV files");
+            System.out.println(" -s : Edge Server functionality");
+            System.out.println(" -h : This help menu");
+        }
 
-        // TODO: heatmap values need further handling (many 0s, small variation in the rest)
-        System.out.println("Creating RSSI heatmap at '" + outputHeatmapPaths[0] + "' ...");
-        Heatmap heatmapRSSI = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getRssiCellMap());
-        heatmapRSSI.generateHeatmap(baseMapPath, outputHeatmapPaths[0]);
+        if (argsList.contains("-c")) {
+            System.out.println("Converting XML files to CSV ...");
+            SumoXml2Csv sumoConverter = new SumoXml2Csv(min_lat, max_lat, min_lon, max_lon);
+            sumoConverter.xml2csvConvert(vehiclesXmlPaths[0], outputVehiclesCsvPaths[0]);
+            sumoConverter.xml2csvConvert(vehiclesXmlPaths[1], outputVehiclesCsvPaths[1]);
+            sumoConverter.xml2csvConvert(vehiclesXmlPaths[2], outputVehiclesCsvPaths[2]);
+        }
 
-        System.out.println("Creating Throughput heatmap at '" + outputHeatmapPaths[1] + "' ...");
-        Heatmap heatmapThroughput = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getThroughputCellMap());
-        heatmapThroughput.generateHeatmap(baseMapPath, outputHeatmapPaths[1]);
+        if (argsList.contains("-g")) {
+            System.out.println("Loading data from '" + outputVehiclesCsvPaths[0] + "' ...");
+            SumoCsvReader sumoReader = new SumoCsvReader(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells);
+            sumoReader.readCsv(outputVehiclesCsvPaths[0]);
+
+            // TODO: heatmap values need further handling (many 0s, small variation in the rest)
+            System.out.println("Creating RSSI heatmap at '" + outputHeatmapPaths[0] + "' ...");
+            Heatmap heatmapRSSI = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getRssiCellMap());
+            heatmapRSSI.generateHeatmap(baseMapPath, outputHeatmapPaths[0]);
+
+            System.out.println("Creating Throughput heatmap at '" + outputHeatmapPaths[1] + "' ...");
+            Heatmap heatmapThroughput = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getThroughputCellMap());
+            heatmapThroughput.generateHeatmap(baseMapPath, outputHeatmapPaths[1]);
+        }
+
+        if (argsList.contains("-s")) {
+            try {
+                ESSubscriber v26sub = new ESSubscriber("V26sub", EdgeServer.getVehicleTopic(0));
+                ESSubscriber v27sub = new ESSubscriber("V27sub", EdgeServer.getVehicleTopic(1));
+            } catch (MqttException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
