@@ -9,6 +9,7 @@ public final class EdgeServer {
     private static final boolean fullDateFormat = false;
 
     private static final String[] vehicleTopics = {"v26/topic", "v27/topic"};
+//    private static final String[] vehicleTopics = {"v26/topic", "v27/topic"};     // TODO
 
     private EdgeServer() {      // we don't want instances of this class
     }

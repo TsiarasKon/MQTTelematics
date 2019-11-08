@@ -6,6 +6,7 @@ import sumo_data_handler.Heatmap;
 import sumo_data_handler.SumoCsvReader;
 import sumo_data_handler.SumoXml2Csv;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -59,6 +60,10 @@ public class Main {
         }
 
         if (argsList.contains("-c")) {
+            File directory = new File("out/");
+            if (! directory.exists()){
+                directory.mkdir();
+            }
             System.out.println("Converting XML files to CSV ...");
             SumoXml2Csv sumoConverter = new SumoXml2Csv(min_lat, max_lat, min_lon, max_lon);
             sumoConverter.xml2csvConvert(vehiclesXmlPaths[0], outputVehiclesCsvPaths[0]);
