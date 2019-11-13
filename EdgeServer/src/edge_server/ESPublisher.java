@@ -20,6 +20,10 @@ public class ESPublisher {
         this.client.subscribe(this.topic, qos);
     }
 
+    public String getClientId() {
+        return clientId;
+    }
+
     public void publishMessage(String messageStr) {
         MqttMessage message = new MqttMessage(messageStr.getBytes());
         message.setQos(qos);

@@ -1,27 +1,36 @@
-package com.example.androidterminal.edge_server;
+package com.example.androidterminal;
+
+import com.example.androidterminal.edge_server.EdgeServer;
 
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
-public class ESPublisher {
-
+public class TerminalPublisher {
+    private final String ipAddr;
+    private final int port;
     private final String clientId;
+    private final String topic;
     private final int qos = 2;
-    private String topic;
     private MqttClient client;
 
-    public ESPublisher(String clientId, String topic) throws MqttException {
+    public TerminalPublisher(String clientId, String ipAddr, int port, String topic) throws MqttException {
         this.clientId = clientId;
+        this.ipAddr = ipAddr;
+        this.port = port;
         this.topic = topic;
         MqttConnectOptions conOpt = new MqttConnectOptions();
         conOpt.setCleanSession(true);
-        this.client = new MqttClient(EdgeServer.getBroker(), clientId, new MemoryPersistence());
+        this.client = new MqttClient(getBroker(), clientId, new MemoryPersistence());
         this.client.connect(conOpt);
         this.client.subscribe(this.topic, qos);
     }
 
     public String getClientId() {
         return clientId;
+    }
+
+    private String getBroker() {
+        return "tcp://" + ipAddr + ':' + port;
     }
 
     public void publishMessage(String messageStr) {

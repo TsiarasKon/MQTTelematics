@@ -6,7 +6,11 @@ import sumo_data_handler.Heatmap;
 import sumo_data_handler.SumoCsvReader;
 import sumo_data_handler.SumoXml2Csv;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.ConnectException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -55,7 +59,7 @@ public class Main {
             System.out.println("Available options:");
             System.out.println(" -c : Convert XML files to CSV");
             System.out.println(" -g : Generate heatmaps from CSV files");
-            System.out.println(" -s : Edge Server functionality");
+            System.out.println(" -s : Edge Server functionality - Mosquitto must already be running");
             System.out.println(" -h : This help menu");
         }
 
@@ -86,10 +90,34 @@ public class Main {
             heatmapThroughput.generateHeatmap(baseMapPath, outputHeatmapPaths[1]);
         }
 
+//        if (argsList.contains("-m")) {
+//            try {
+//                Runtime rt = Runtime.getRuntime();
+//                String[] commands = {"../mosquitto/mosquitto.exe"};
+//                Process proc = rt.exec(commands);
+//
+//                BufferedReader stdInput = new BufferedReader(new
+//                        InputStreamReader(proc.getInputStream()));
+//
+//                BufferedReader stdError = new BufferedReader(new
+//                        InputStreamReader(proc.getErrorStream()));
+//                String s = null;
+//                while ((s = stdInput.readLine()) != null) {
+//                    System.out.println(s);
+//                }
+//                System.out.println("hiii");
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
+
         if (argsList.contains("-s")) {
             try {
-                ESSubscriber v26sub = new ESSubscriber("V26sub", EdgeServer.getVehicleTopic(0));
-                ESSubscriber v27sub = new ESSubscriber("V27sub", EdgeServer.getVehicleTopic(1));
+                new ESSubscriber("V26sub", EdgeServer.getVehicleTopic(0));
+                new ESSubscriber("V27sub", EdgeServer.getVehicleTopic(1));
+//            } catch (ConnectException e) {
+//                System.err.println("Failed to connect to server; have you started Mosquitto?");
             } catch (MqttException e) {
                 e.printStackTrace();
             }

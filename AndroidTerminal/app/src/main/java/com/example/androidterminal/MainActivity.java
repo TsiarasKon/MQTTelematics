@@ -1,16 +1,16 @@
 package com.example.androidterminal;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 
-import com.example.androidterminal.edge_server.ESPublisher;
-import com.example.androidterminal.edge_server.EdgeServer;
-
-import androidx.annotation.RawRes;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import android.os.Handler;
 import android.text.TextUtils;
@@ -18,7 +18,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,19 +27,21 @@ import java.io.InputStream;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    SharedPreferences prefs;
     private TextView runtimeText;
 
-    ESPublisher esp = null;
+    TerminalPublisher esp = null;
     Handler handler = new Handler();
     List<String[]> dataList;
-    int timerInt = 0;
-    int runtime = -1;
+    int runtime;
     int maxRuntime = -1;
+    int timerInt = 0;
     final int delay = 1000;     // milliseconds
     final int onlineCheckFrequency = 5;     // seconds
 
-    private final int terminalId = 1;
+    private final int terminalId = 0;
     private final String terminalName = (terminalId == 0) ? "v26Terminal" : "v27Terminal";
+    private final String terminalTopic = (terminalId == 0) ? "v26/topic" : "v27/topic";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,26 +56,41 @@ public class MainActivity extends AppCompatActivity {
         CSVFileReader csvFile = new CSVFileReader(inputStream);
         dataList = csvFile.read();
         maxRuntime = dataList.size() - 1;
-        if (runtime < 0 || runtime > maxRuntime) {
-            runtime = maxRuntime;
-        }
         runtimeText.setText(Integer.toString(runtime));
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+//        editor.putString("runtime", Integer.toString(maxRuntime));
+//        editor.clear();
+        editor.apply();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        runtimeText.setText(Integer.toString(runtime - timerInt));
     }
 
     public void startTransmission(View view) {
-        runtimeText.setText(Integer.toString(runtime));
+        if (timerInt > 0) {
+            Toast.makeText(this, "Already transmitting", Toast.LENGTH_SHORT).show();
+            return;
+        }
         try {
             Log.i(terminalName, "Trying to connect ...");
-            esp = new ESPublisher(terminalName, EdgeServer.getVehicleTopic(0));
+            esp = new TerminalPublisher(terminalName, prefs.getString("ipAddr", null), Integer.parseInt(prefs.getString("port", 1883+"")), terminalTopic);
             Log.i(terminalName, "Connected successfully!");
         } catch (MqttException e) {
             e.printStackTrace();
         }
+
+        runtime = Integer.parseInt(prefs.getString("runtime", maxRuntime+""));
+        // TODO: transfer check
+        if (runtime < 0 || runtime > maxRuntime) {
+            runtime = maxRuntime;
+        }
+        runtimeText.setText(Integer.toString(runtime));
+
         esp.publishMessage("'" + terminalName + "' connected successfully; starting transmission of " + runtime + " datapoints");
         if (esp == null) {
             Toast.makeText(this, "Check app settings:\nIP and/or Port not set", Toast.LENGTH_SHORT).show();
@@ -105,10 +121,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void stopTransmission(View view) {
-        handler.removeCallbacksAndMessages(null);
-        runtimeText.setText("Transmission was stopped!");
-        esp.publishMessage("Transmission from '" + terminalName + "' was stopped");
-        timerInt = 0;
+        if (timerInt > 0) {
+            handler.removeCallbacksAndMessages(null);
+            runtimeText.setText("Transmission was stopped!");
+            esp.publishMessage("Transmission from '" + terminalName + "' was stopped");
+            timerInt = 0;
+        }
     }
 
     public static boolean isDeviceOnline(Context context) {
@@ -120,26 +138,32 @@ public class MainActivity extends AppCompatActivity {
         return isOnline;
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putInt("TIMER_INT", timerInt);
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        timerInt = savedInstanceState.getInt("TIMER_INT");
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 }

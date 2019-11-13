@@ -6,7 +6,23 @@
     <string name="button_start">START</string>
     <string name="button_stop">STOP</string>
     <string name="button_exit">EXIT</string>
-    <string name="setting_runtime">Runtime:</string>
-    <string name="setting_ip">IP:</string>
-    <string name="setting_port">Port:</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preferences -->
+    <string name="settings_server">Server Settings</string>
+    <string name="setting_runtime">Runtime</string>
+    <string name="setting_ip">IP Address</string>
+    <string name="setting_port">Port</string>
+
+    <!-- Messages Preferences -->
+    <string name="sync_header">Sync</string>
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 </resources>
