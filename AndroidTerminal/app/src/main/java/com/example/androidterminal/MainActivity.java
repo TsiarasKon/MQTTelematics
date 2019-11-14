@@ -60,7 +60,10 @@ public class MainActivity extends AppCompatActivity {
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
-//        editor.putString("runtime", Integer.toString(maxRuntime));
+        if (prefs.getString("runtime", null) == null) {
+            editor.putString("runtime", Integer.toString(maxRuntime));
+        }
+        editor.putString("maxRuntime", Integer.toString(maxRuntime));
 //        editor.clear();
         editor.apply();
     }

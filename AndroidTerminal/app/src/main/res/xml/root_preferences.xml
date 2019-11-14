@@ -53,7 +53,7 @@
             android:id="@+id/exitButton"
             android:layout_marginTop="32sp"
             android:clickable="true"
-            android:textColor="@color/red"
+            android:textColor="@color/colorAccent"
             app:key="exitButton"
             app:title="Exit" />
 

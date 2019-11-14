@@ -9,7 +9,7 @@
     <string name="title_activity_settings">Settings</string>
 
     <!-- Preferences -->
-    <string name="settings_server">Server Settings</string>
+    <string name="settings_server">Server Connection</string>
     <string name="setting_runtime">Runtime</string>
     <string name="setting_ip">IP Address</string>
     <string name="setting_port">Port</string>
