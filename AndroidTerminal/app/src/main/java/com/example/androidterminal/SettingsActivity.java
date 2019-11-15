@@ -28,9 +28,6 @@ import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
-import java.io.IOException;
-import java.net.InetAddress;
-
 public class SettingsActivity extends AppCompatActivity {
 
     @Override

@@ -1,7 +1,5 @@
 package com.example.androidterminal;
 
-import com.example.androidterminal.edge_server.EdgeServer;
-
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
@@ -10,6 +8,7 @@ public class TerminalPublisher {
     private final int port;
     private final String clientId;
     private final String topic;
+    private final int connectionTimeout = 5;
     private final int qos = 2;
     private MqttClient client;
 
@@ -20,6 +19,7 @@ public class TerminalPublisher {
         this.topic = topic;
         MqttConnectOptions conOpt = new MqttConnectOptions();
         conOpt.setCleanSession(true);
+        conOpt.setConnectionTimeout(connectionTimeout);
         this.client = new MqttClient(getBroker(), clientId, new MemoryPersistence());
         this.client.connect(conOpt);
         this.client.subscribe(this.topic, qos);

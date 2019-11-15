@@ -39,10 +39,10 @@
     <PreferenceCategory app:title="@string/setting_runtime">
 
         <EditTextPreference
-            android:inputType="numberDecimal"
-            android:digits="0123456789"
             app:key="runtime"
             app:title="@string/setting_runtime"
+            android:inputType="numberDecimal"
+            android:digits="0123456789"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>

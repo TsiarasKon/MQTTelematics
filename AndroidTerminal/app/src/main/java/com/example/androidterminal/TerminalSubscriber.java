@@ -1,7 +1,5 @@
 package com.example.androidterminal;
 
-import com.example.androidterminal.edge_server.EdgeServer;
-
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
@@ -52,6 +50,6 @@ public class TerminalSubscriber implements MqttCallback {
 
     @Override
     public void messageArrived(String topic, MqttMessage message) {
-        System.out.println(String.format("%s [%s]: %s", EdgeServer.getCurrentTime(), topic, new String(message.getPayload())));
+        System.out.println(String.format("%s [%s]: %s", Utilities.getCurrentTime(), topic, new String(message.getPayload())));
     }
 }

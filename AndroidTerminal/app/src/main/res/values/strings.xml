@@ -6,6 +6,7 @@
     <string name="button_start">START</string>
     <string name="button_stop">STOP</string>
     <string name="button_exit">EXIT</string>
+    <string name="runtimeText">Not Connected</string>
     <string name="title_activity_settings">Settings</string>
 
     <!-- Preferences -->
