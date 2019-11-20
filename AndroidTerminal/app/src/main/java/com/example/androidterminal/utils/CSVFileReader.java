@@ -1,4 +1,4 @@
-package com.example.androidterminal;
+package com.example.androidterminal.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

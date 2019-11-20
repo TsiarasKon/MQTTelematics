@@ -1,16 +1,10 @@
-package main;
+import network.ESSubscriber;
+import network.EdgeServer;
+import sumo_data.Heatmap;
+import sumo_data.SumoCsvReader;
+import sumo_data.SumoXml2Csv;
 
-import edge_server.ESSubscriber;
-import edge_server.EdgeServer;
-import sumo_data_handler.Heatmap;
-import sumo_data_handler.SumoCsvReader;
-import sumo_data_handler.SumoXml2Csv;
-
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.ConnectException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -80,7 +74,6 @@ public class Main {
             SumoCsvReader sumoReader = new SumoCsvReader(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells);
             sumoReader.readCsv(outputVehiclesCsvPaths[0]);
 
-            // TODO: heatmap values need further handling (many 0s, small variation in the rest)
             System.out.println("Creating RSSI heatmap at '" + outputHeatmapPaths[0] + "' ...");
             Heatmap heatmapRSSI = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getRssiCellMap());
             heatmapRSSI.generateHeatmap(baseMapPath, outputHeatmapPaths[0]);
@@ -89,28 +82,6 @@ public class Main {
             Heatmap heatmapThroughput = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getThroughputCellMap());
             heatmapThroughput.generateHeatmap(baseMapPath, outputHeatmapPaths[1]);
         }
-
-//        if (argsList.contains("-m")) {
-//            try {
-//                Runtime rt = Runtime.getRuntime();
-//                String[] commands = {"../mosquitto/mosquitto.exe"};
-//                Process proc = rt.exec(commands);
-//
-//                BufferedReader stdInput = new BufferedReader(new
-//                        InputStreamReader(proc.getInputStream()));
-//
-//                BufferedReader stdError = new BufferedReader(new
-//                        InputStreamReader(proc.getErrorStream()));
-//                String s = null;
-//                while ((s = stdInput.readLine()) != null) {
-//                    System.out.println(s);
-//                }
-//                System.out.println("hiii");
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
 
         if (argsList.contains("-s")) {
             try {

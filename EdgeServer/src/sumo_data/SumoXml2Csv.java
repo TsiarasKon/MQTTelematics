@@ -1,4 +1,4 @@
-package sumo_data_handler;
+package sumo_data;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

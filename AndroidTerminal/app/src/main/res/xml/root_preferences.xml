@@ -21,7 +21,7 @@
 
         <EditTextPreference
             app:key="ipAddr"
-            app:defaultValue="85.72.152.109"
+            app:defaultValue="2.87.231.248"
             app:title="@string/setting_ip"
             android:inputType="number"
             app:useSimpleSummaryProvider="true" />
@@ -39,10 +39,10 @@
     <PreferenceCategory app:title="@string/setting_runtime">
 
         <EditTextPreference
+            android:digits="0123456789"
+            android:inputType="numberDecimal"
             app:key="runtime"
             app:title="@string/setting_runtime"
-            android:inputType="numberDecimal"
-            android:digits="0123456789"
             app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>

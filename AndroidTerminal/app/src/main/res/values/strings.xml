@@ -2,7 +2,8 @@
     <string name="app_name">Android Vehicle Terminal</string>
     <string name="action_settings">Settings</string>
     <string name="app_title">Software Development for Networks</string>
-    <string name="app_subtitle">TODO Project description</string>
+    <string name="app_subtitle">1) Set IP address, port and transmission runtime from the Settings in the upper right menu.\n
+        2) Click the "Start" button to begin transmitting this vehicle\'s data to the Edge Server. </string>
     <string name="button_start">START</string>
     <string name="button_stop">STOP</string>
     <string name="button_exit">EXIT</string>

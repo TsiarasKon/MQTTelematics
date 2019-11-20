@@ -1,4 +1,4 @@
-package edge_server;
+package network;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,8 +8,8 @@ public final class EdgeServer {
     private static final int port = 1883;
     private static final boolean fullDateFormat = false;
 
-    private static final String[] vehicleTopics = {"v26/topic", "v27/topic"};
-//    private static final String[] vehicleTopics = {"v26/topic", "v27/topic"};     // TODO
+    private static final String[] vehicle2esTopics = {"v26_ES/topic", "v27_ES/topic"};
+    private static final String[] es2vehicleTopics = {"ES_v26/topic", "ES_v27/topic"};     // unused for now
 
     private EdgeServer() {      // we don't want instances of this class
     }
@@ -28,7 +28,7 @@ public final class EdgeServer {
 
     public static String getVehicleTopic(int index) {
         try {
-            return vehicleTopics[index];
+            return vehicle2esTopics[index];
         } catch (IndexOutOfBoundsException e) {
             System.err.println("Tried to getVehicleTopic(index) with invalid index!");
             return null;

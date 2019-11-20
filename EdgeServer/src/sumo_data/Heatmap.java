@@ -1,4 +1,4 @@
-package sumo_data_handler;
+package sumo_data;
 
 import org.tc33.jheatchart.HeatChart;
 
@@ -33,7 +33,7 @@ public class Heatmap {
             return;
         }
 
-//        // dummy data here:
+        // dummy data here:
 //        double[][] data = new double[][]{{3,2,7,4,5,6,4,5,3,7},
 //                {2,3,4,5,6,7,7,3,6,5},
 //                {3,4,5,6,7,6,5,4,3,3},
@@ -51,7 +51,7 @@ public class Heatmap {
         map.setChartMargin(2);
         map.setAxisThickness(4);
 
-//        // Optional: save plain heatmap to a file
+        // Optional: save plain heatmap to a file
 //        try {
 //            map.saveToFile(new File(outputDirpath + "heatmap.png"));
 //        } catch (IOException e) {

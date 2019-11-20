@@ -1,32 +1,21 @@
-package com.example.androidterminal;
+package com.example.androidterminal.activities;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.InputFilter;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.EditTextPreference;
 import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
+
+import com.example.androidterminal.R;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -49,13 +38,14 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences prefs;
 
         @Override
-        public void onCreate(@Nullable Bundle savedInstanceState) {
+        public void onCreate(@Nullable Bundle savedInstanceState) {     // settings' input checks go here
             super.onCreate(savedInstanceState);
+            prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            final int maxRuntime = Integer.parseInt(prefs.getString("maxRuntime", "0"));
+            this.findPreference("runtime").setTitle("Runtime (max " + maxRuntime + ")");
             this.findPreference("runtime").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
                 @Override
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
-                    prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                    final int maxRuntime =  Integer.parseInt(prefs.getString("maxRuntime", "0"));
                     try {
                         int val = Integer.parseInt(newValue.toString());
                         if (val >= 0 && val <= maxRuntime) {

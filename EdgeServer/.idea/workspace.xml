@@ -2,23 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e4330e5-b718-49ed-867a-90e00715f7b1" name="Default Changelist" comment="Edge Server implementation&#10;&#10;* Both Paho MQTT Publisher and Subscriber&#10;* Also added options menu (using command line args) in main">
-      <change afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/SettingsActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/layout/settings_activity.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/values/arrays.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/xml/root_preferences.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/utils/Utilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/edge_server/ESPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/TerminalPublisher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/edge_server/ESSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/TerminalSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/AsyncConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/utils/AsyncConnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/CSVFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/utils/CSVFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/ItemArrayAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/utils/ItemArrayAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/SettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/SettingsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/TerminalPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/network/TerminalPublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/TerminalSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/network/TerminalSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/Utilities.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/layout/content_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/layout/content_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/menu/menu_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/menu/menu_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/xml/root_preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/res/xml/root_preferences.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/edge_server/ESPublisher.class" beforeDir="false" afterPath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/edge_server/ESPublisher.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/edge_server/EdgeServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/edge_server/EdgeServer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/edge_server/ESPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edge_server/ESPublisher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/edge_server/ESPublisher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/edge_server/ESSubscriber.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/edge_server/EdgeServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/main/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/sumo_data_handler/Heatmap.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/sumo_data_handler/SumoCsvReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/sumo_data_handler/SumoXml2Csv.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Heatmap_RSSI.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/Heatmap_RSSI.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Heatmap_Throughput.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/Heatmap_Throughput.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edge_server/ESPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/ESPublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edge_server/ESSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/ESSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edge_server/EdgeServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/EdgeServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sumo_data_handler/Heatmap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sumo_data/Heatmap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sumo_data_handler/SumoCsvReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sumo_data/SumoCsvReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sumo_data_handler/SumoXml2Csv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sumo_data/SumoXml2Csv.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,49 +46,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="48" column="44" lean-forward="true" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sumo_data/Heatmap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="274">
+              <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sumo_data/SumoCsvReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="7" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="734">
-              <caret line="112" column="11" lean-forward="true" selection-start-line="112" selection-start-column="11" selection-end-line="112" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edge_server/ESPublisher.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#741#742#0" expanded="true" />
-                <element signature="e#772#773#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edge_server/ESSubscriber.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/edge_server/EdgeServer.java">
+        <entry file="file://$PROJECT_DIR$/src/network/EdgeServer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
-              <caret line="11" column="91" selection-start-line="11" selection-start-column="91" selection-end-line="11" selection-end-column="91" />
+              <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -108,16 +120,19 @@
         <option value="$PROJECT_DIR$/src/sumo_data_handler/SumoXml2csv.java" />
         <option value="$PROJECT_DIR$/src/sumo_data_handler/Heatmap.java" />
         <option value="$PROJECT_DIR$/src/sumo_data_handler/SumoXml2Csv.java" />
-        <option value="$PROJECT_DIR$/src/sumo_data_handler/SumoCsvReader.java" />
         <option value="$PROJECT_DIR$/src/mqtt_paho/ESSubscriber.java" />
-        <option value="$PROJECT_DIR$/src/edge_server/EdgeServer.java" />
         <option value="$PROJECT_DIR$/src/edge_server/ESSubscriber.java" />
         <option value="$PROJECT_DIR$/src/edge_server/ESPublisher.java" />
+        <option value="$PROJECT_DIR$/src/sumo_data_handler/SumoCsvReader.java" />
         <option value="$PROJECT_DIR$/src/main/Main.java" />
+        <option value="$PROJECT_DIR$/src/edge_server/EdgeServer.java" />
+        <option value="$PROJECT_DIR$/src/network/EdgeServer.java" />
+        <option value="$PROJECT_DIR$/src/sumo_data/SumoCsvReader.java" />
+        <option value="$PROJECT_DIR$/src/sumo_data/Heatmap.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="3832" />
     <option name="y" value="103" />
     <option name="width" value="1096" />
@@ -144,6 +159,32 @@
             <path>
               <item name="EdgeServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
+              <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EdgeServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
+              <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EdgeServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
+              <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EdgeServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
+              <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+              <item name="AlnProject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EdgeServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -165,32 +206,26 @@
               <item name="EdgeServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="edge_server" type="462c0819:PsiDirectoryNode" />
+              <item name="network" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="EdgeServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="EdgeServer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="sumo_data_handler" type="462c0819:PsiDirectoryNode" />
+              <item name="sumo_data" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1573665733180" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574269736815" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/org-jdesktop-swingx.jar!/" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -199,6 +234,9 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\lib" />
       <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\src\main" />
@@ -226,9 +264,9 @@
   </component>
   <component name="RunManager" selected="Application.ServerOnly">
     <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="main.Main" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlnProject" />
-      <option name="PROGRAM_PARAMETERS" value="-c -g" />
+      <option name="PROGRAM_PARAMETERS" value="-g" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
@@ -236,7 +274,7 @@
       </method>
     </configuration>
     <configuration name="ServerOnly" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="main.Main" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlnProject" />
       <option name="PROGRAM_PARAMETERS" value="-s" />
       <method v="2">
@@ -271,7 +309,13 @@
       <workItem from="1573553201395" duration="2470000" />
       <workItem from="1573555771139" duration="2506000" />
       <workItem from="1573579518958" duration="34000" />
-      <workItem from="1573642748011" duration="3313000" />
+      <workItem from="1573642748011" duration="3901000" />
+      <workItem from="1573666601163" duration="204000" />
+      <workItem from="1573824942287" duration="1349000" />
+      <workItem from="1574111622701" duration="401000" />
+      <workItem from="1574186446705" duration="7355000" />
+      <workItem from="1574242415425" duration="704000" />
+      <workItem from="1574243139295" duration="4738000" />
     </task>
     <task id="LOCAL-00001" summary="Xml2csv converter&#10;&#10;* lacks RSSI and throughput&#10;* commit includes provided resources">
       <created>1572287602872</created>
@@ -319,13 +363,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76705000" />
+    <option name="totallyTimeSpent" value="92044000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3832" y="103" width="1096" height="1896" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27123553" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25096524" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -334,7 +378,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3216109" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3216109" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -427,10 +471,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/out/vehicle_27.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/saved.png" />
     <entry file="file://$PROJECT_DIR$/res/Map.jpg">
@@ -442,30 +486,10 @@
     <entry file="file://$PROJECT_DIR$/EdgeServer/out/Heatmap_RSSI.png" />
     <entry file="file://$PROJECT_DIR$/EdgeServer/out/Heatmap_Throughput.png" />
     <entry file="file://$PROJECT_DIR$/EdgeServer/out/all_vehicles.csv" />
-    <entry file="file://$PROJECT_DIR$/src/sumo_data_handler/SumoXml2Csv.java">
+    <entry file="file://$PROJECT_DIR$/src/sumo_data/SumoXml2Csv.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
           <caret line="149" column="71" selection-start-line="149" selection-start-column="38" selection-end-line="149" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sumo_data_handler/Heatmap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="39" column="41" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sumo_data_handler/SumoCsvReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -479,17 +503,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/out/Heatmap_RSSI.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out/Heatmap_Throughput.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/out/vehicle_26.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/org.eclipse.paho.client.mqttv3.jar!/org/eclipse/paho/client/mqttv3/internal/TCPNetworkModule.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -505,7 +523,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edge_server/ESPublisher.java">
+    <entry file="file://$PROJECT_DIR$/src/network/ESPublisher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
@@ -517,7 +535,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edge_server/ESSubscriber.java">
+    <entry file="file://$PROJECT_DIR$/src/network/ESSubscriber.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="760">
           <caret line="38" selection-start-line="38" selection-end-line="38" />
@@ -527,20 +545,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/edge_server/EdgeServer.java">
+    <entry file="file://$PROJECT_DIR$/out/Heatmap_Throughput.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/Heatmap_RSSI.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EdgeServer/out/production/AlnProject/Map.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="91" selection-start-line="11" selection-start-column="91" selection-end-line="11" selection-end-column="91" />
+        <state relative-caret-position="34">
+          <caret line="48" column="44" lean-forward="true" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/sumo_data/Heatmap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="734">
-          <caret line="112" column="11" lean-forward="true" selection-start-line="112" selection-start-column="11" selection-end-line="112" selection-end-column="11" />
+        <state relative-caret-position="274">
+          <caret line="36" column="20" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sumo_data/SumoCsvReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="7" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/EdgeServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

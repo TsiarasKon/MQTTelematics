@@ -1,4 +1,4 @@
-package sumo_data_handler;
+package sumo_data;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -57,25 +57,6 @@ public class SumoCsvReader {
         return (index == cellsNum) ? (cellsNum - 1) : index;
     }
 
-//    // generics won't work :(
-//    private <T> void printCellMap(T[][] cellmap) {
-//        for (int i = 0; i < heightCells; i++) {
-//            for (int j = 0; j < widthCells; j++) {
-//                System.out.println(cellmap[i][j] + " ");
-//            }
-//            System.out.println();
-//        }
-//    }
-//
-//    private <T extends Number> double getListAverage(List<T> list) {
-//        if (list.size() == 0) return 0.0;
-//        double avg = 0.0;
-//        for (T num : list) {
-//            avg += num;
-//        }
-//        return avg / list.size();
-//    }
-
     private double getIntListAverage(List<Integer> list) {
         if (list.size() == 0) return 0.0;
         double avg = 0.0;
@@ -127,6 +108,18 @@ public class SumoCsvReader {
                 }
             }
         }
+
+        // reverse rows' order (latitude)
+        double[] tempRSSIRow, tempThroughputRow;
+        for (int i = 0, k = rssiCellMap.length - 1; i < rssiCellMap.length / 2; i++, k--) {
+            tempRSSIRow = rssiCellMap[k];
+            tempThroughputRow = throughputCellMap[k];
+            rssiCellMap[k] = rssiCellMap[i];
+            throughputCellMap[k] = throughputCellMap[i];
+            rssiCellMap[i] = tempRSSIRow;
+            throughputCellMap[i] = tempThroughputRow;
+        }
+
         // For debugging:
 //        for (int i = 0; i < heightCells; i++) {
 //            for (int j = 0; j < widthCells; j++) {
