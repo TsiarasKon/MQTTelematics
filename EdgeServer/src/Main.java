@@ -14,6 +14,7 @@ public class Main {
     private static final String[] vehiclesXmlPaths;
     private static final String[] outputVehiclesCsvPaths;
     private static final String baseMapPath;
+    private static final String heatmapLegendPath;
     private static final String[] outputHeatmapPaths;
     private static final double min_lat;
     private static final double max_lat;
@@ -34,6 +35,7 @@ public class Main {
                 "out/vehicle_27.csv"
         };
         baseMapPath = "res/Map.jpg";
+        heatmapLegendPath = "res/heatmap_legend.png";
         outputHeatmapPaths = new String[]{
                 "out/Heatmap_RSSI.png",
                 "out/Heatmap_Throughput.png"
@@ -76,11 +78,11 @@ public class Main {
 
             System.out.println("Creating RSSI heatmap at '" + outputHeatmapPaths[0] + "' ...");
             Heatmap heatmapRSSI = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getRssiCellMap());
-            heatmapRSSI.generateHeatmap(baseMapPath, outputHeatmapPaths[0]);
+            heatmapRSSI.generateHeatmap(baseMapPath, outputHeatmapPaths[0], heatmapLegendPath);
 
             System.out.println("Creating Throughput heatmap at '" + outputHeatmapPaths[1] + "' ...");
             Heatmap heatmapThroughput = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getThroughputCellMap());
-            heatmapThroughput.generateHeatmap(baseMapPath, outputHeatmapPaths[1]);
+            heatmapThroughput.generateHeatmap(baseMapPath, outputHeatmapPaths[1],heatmapLegendPath);
         }
 
         if (argsList.contains("-s")) {

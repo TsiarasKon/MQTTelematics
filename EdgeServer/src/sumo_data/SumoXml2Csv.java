@@ -25,7 +25,7 @@ public class SumoXml2Csv {
     private double min_lon;
     private double max_lon;
     private int meanRSSI = 60;
-    private int stdRSSI = 40;
+    private int stdRSSI = 100;
     private int maxLinkCapacity = 50;     // in Mbps
 
     private Random random;
