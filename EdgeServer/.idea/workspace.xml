@@ -1,12 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e4330e5-b718-49ed-867a-90e00715f7b1" name="Default Changelist" comment="Edge Server implementation&#10;&#10;* Both Paho MQTT Publisher and Subscriber&#10;* Also added options menu (using command line args) in main">
+    <list default="true" id="2e4330e5-b718-49ed-867a-90e00715f7b1" name="Default Changelist" comment="Heatmap generation improvements">
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/SettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/SettingsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/network/TerminalPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/network/TerminalPublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/network/TerminalSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/network/TerminalSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/utils/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/utils/Utilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/Map.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/Map.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/all_vehicles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/vehicle_26.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/vehicle_27.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/Heatmap_RSSI.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/Heatmap_RSSI.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/Heatmap_Throughput.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/Heatmap_Throughput.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/all_vehicles.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/all_vehicles.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/vehicle_26.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/vehicle_26.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/vehicle_27.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/vehicle_27.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Map.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/res/images/Map.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/Map.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/all_vehicles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/xml/all_vehicles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/heatmap_legend.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/images/heatmap_legend.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/vehicle_26.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/xml/vehicle_26.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/res/vehicle_27.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/xml/vehicle_27.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sumo_data/Heatmap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sumo_data/Heatmap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network/ESPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/ESPublisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/network/ESSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/ESSubscriber.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sumo_data/SumoXml2Csv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sumo_data/SumoXml2Csv.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mysql/README.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +42,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="84" column="98" selection-start-line="84" selection-start-column="98" selection-end-line="84" selection-end-column="98" />
+            <state relative-caret-position="1960">
+              <caret line="98" column="140" selection-start-line="98" selection-start-column="140" selection-end-line="98" selection-end-column="140" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sumo_data/Heatmap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2200">
+              <caret line="110" selection-start-line="110" selection-end-line="110" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/network/ESSubscriber.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="580">
+              <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -30,44 +76,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/sumo_data/Heatmap.java">
+        <entry file="file://$PROJECT_DIR$/src/network/ESPublisher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="800">
-              <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/out/Heatmap_RSSI.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/out/Heatmap_Throughput.png">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sumo_data/SumoCsvReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/network/EdgeServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+            <state relative-caret-position="560">
+              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,14 +124,17 @@
         <option value="$PROJECT_DIR$/src/edge_server/EdgeServer.java" />
         <option value="$PROJECT_DIR$/src/network/EdgeServer.java" />
         <option value="$PROJECT_DIR$/src/sumo_data/SumoCsvReader.java" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/sumo_data/Heatmap.java" />
+        <option value="$PROJECT_DIR$/src/sumo_data/SumoXml2Csv.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/network/ESSubscriber.java" />
+        <option value="$PROJECT_DIR$/src/network/ESPublisher.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1722" />
-    <option name="width" value="2127" />
+    <option name="x" value="1908" />
+    <option name="width" value="1941" />
     <option name="height" value="2112" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -184,6 +199,18 @@
             <path>
               <item name="EdgeServer" type="b2602c69:ProjectViewProjectNode" />
               <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EdgeServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="EdgeServer" type="b2602c69:ProjectViewProjectNode" />
+              <item name="EdgeServer" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -202,14 +229,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574542169203" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575281825298" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/org-jdesktop-swingx.jar!/" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -218,6 +245,13 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="K:\MyProjects\AlnProject\EdgeServer\res\xml" />
+      <recent name="K:\MyProjects\AlnProject\EdgeServer\res\images" />
+      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\EdgeServer" />
+      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\out" />
+      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
@@ -225,13 +259,6 @@
       <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\lib" />
       <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\src\main" />
       <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\res" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\EdgeServer" />
-      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\out" />
-      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject" />
-      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\" />
-      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\\" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -246,11 +273,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.ServerOnly">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlnProject" />
-      <option name="PROGRAM_PARAMETERS" value="-c -g" />
+      <option name="PROGRAM_PARAMETERS" value="-g" />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method v="2">
@@ -302,7 +329,12 @@
       <workItem from="1574243139295" duration="5337000" />
       <workItem from="1574361632722" duration="201000" />
       <workItem from="1574461529887" duration="1306000" />
-      <workItem from="1574534662451" duration="6973000" />
+      <workItem from="1574534662451" duration="7231000" />
+      <workItem from="1574785346174" duration="23000" />
+      <workItem from="1574888710806" duration="12173000" />
+      <workItem from="1575031812836" duration="757000" />
+      <workItem from="1575032756408" duration="9000" />
+      <workItem from="1575281417357" duration="469000" />
     </task>
     <task id="LOCAL-00001" summary="Xml2csv converter&#10;&#10;* lacks RSSI and throughput&#10;* commit includes provided resources">
       <created>1572287602872</created>
@@ -346,17 +378,23 @@
       <option name="project" value="LOCAL" />
       <updated>1573216894254</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Heatmap generation improvements">
+      <created>1574542242323</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1574542242323</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101123000" />
+    <option name="totallyTimeSpent" value="114812000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1148" y="0" width="1418" height="1408" extended-state="0" />
-    <editor active="true" />
+    <frame x="1272" y="0" width="1294" height="1408" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22017673" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26337114" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -365,13 +403,13 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3213166" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3197492" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3295519" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32941177" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3295519" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -391,6 +429,46 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
@@ -401,13 +479,12 @@
     <MESSAGE value="Structure modifications&#10;&#10;+ initial csv data handling attempts" />
     <MESSAGE value="Working cellMaps constructed from csv data&#10;&#10;+ heatmaps now created using said data" />
     <MESSAGE value="Edge Server implementation&#10;&#10;* Both Paho MQTT Publisher and Subscriber&#10;* Also added options menu (using command line args) in main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edge Server implementation&#10;&#10;* Both Paho MQTT Publisher and Subscriber&#10;* Also added options menu (using command line args) in main" />
+    <MESSAGE value="Heatmap generation improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Heatmap generation improvements" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Heatmap.java" />
-    <entry file="file://$PROJECT_DIR$/res/Map.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/res/Map.png" />
     <entry file="file://$PROJECT_DIR$/outFile.jpg" />
     <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.desktop/javax/imageio/ImageIO.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -439,7 +516,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sumo_data_handler.java" />
     <entry file="file://$PROJECT_DIR$/EdgeServer/out/java-heat-chart0.png" />
-    <entry file="file://$PROJECT_DIR$/res/vehicle_26.xml">
+    <entry file="file://$PROJECT_DIR$/res/xml/vehicle_26.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/EdgeServer/out/saved.png" />
@@ -450,7 +527,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/all_vehicles.xml">
+    <entry file="file://$PROJECT_DIR$/res/xml/all_vehicles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="1" column="97" selection-start-line="1" selection-start-column="97" selection-end-line="1" selection-end-column="97" />
@@ -464,25 +541,12 @@
       <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/saved.png" />
-    <entry file="file://$PROJECT_DIR$/res/Map.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/java-heat-chartt2.png" />
     <entry file="file://$PROJECT_DIR$/EdgeServer/out/java-heat-chartt2.png" />
     <entry file="file://$PROJECT_DIR$/EdgeServer/out/overlayedMap.png" />
     <entry file="file://$PROJECT_DIR$/EdgeServer/out/Heatmap_RSSI.png" />
     <entry file="file://$PROJECT_DIR$/EdgeServer/out/Heatmap_Throughput.png" />
     <entry file="file://$PROJECT_DIR$/EdgeServer/out/all_vehicles.csv" />
-    <entry file="file://$PROJECT_DIR$/src/sumo_data/SumoXml2Csv.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="149" column="71" selection-start-line="149" selection-start-column="38" selection-end-line="149" selection-end-column="71" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/org.eclipse.paho.client.mqttv3.jar!/org/eclipse/paho/client/mqttv3/MqttCallback.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -510,41 +574,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/ESPublisher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#741#742#0" expanded="true" />
-            <element signature="e#772#773#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/ESSubscriber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EdgeServer/out/production/AlnProject/Map.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/EdgeServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/EdgeServer/out/production/AlnProject/Map.png" />
     <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.desktop/java/awt/Transparency.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="421">
@@ -552,12 +582,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sumo_data/SumoCsvReader.java">
+    <entry file="file://$PROJECT_DIR$/res/images/heatmap_legend.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/images/Map.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/EdgeServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+        <state relative-caret-position="158">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sumo_data/SumoXml2Csv.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-261">
+          <caret line="72" column="5" lean-forward="true" selection-start-line="72" selection-start-column="5" selection-end-line="72" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2851#2852#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -568,10 +615,20 @@
     <entry file="file://$PROJECT_DIR$/out/Heatmap_RSSI.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sumo_data/SumoCsvReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1360">
+          <caret line="31" column="81" selection-start-line="31" selection-start-column="81" selection-end-line="31" selection-end-column="81" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="84" column="98" selection-start-line="84" selection-start-column="98" selection-end-line="84" selection-end-column="98" />
+        <state relative-caret-position="1960">
+          <caret line="98" column="140" selection-start-line="98" selection-start-column="140" selection-end-line="98" selection-end-column="140" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -580,8 +637,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sumo_data/Heatmap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="800">
-          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+        <state relative-caret-position="2200">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/ESSubscriber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/ESPublisher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

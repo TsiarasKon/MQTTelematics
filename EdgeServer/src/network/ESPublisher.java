@@ -24,15 +24,10 @@ public class ESPublisher {
         return clientId;
     }
 
-    public void publishMessage(String messageStr) {
+    public void publishMessage(String messageStr) throws MqttException {
         MqttMessage message = new MqttMessage(messageStr.getBytes());
         message.setQos(qos);
-        try {
-            client.publish(topic, message);
-        } catch (MqttException e) {
-            System.err.println(clientId + " failed to send MQTT message to topic " + topic);
-            e.printStackTrace();
-        }
+        client.publish(topic, message);
     }
 
     public void disconnect() {

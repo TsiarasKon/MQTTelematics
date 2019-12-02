@@ -5,8 +5,10 @@ import sumo_data.SumoCsvReader;
 import sumo_data.SumoXml2Csv;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 
 import org.eclipse.paho.client.mqttv3.MqttException;
 
@@ -25,17 +27,17 @@ public class Main {
 
     static {
         vehiclesXmlPaths = new String[]{
-                "res/all_vehicles.xml",
-                "res/vehicle_26.xml",
-                "res/vehicle_27.xml"
+                "res/xml/all_vehicles.xml",
+                "res/xml/vehicle_26.xml",
+                "res/xml/vehicle_27.xml"
         };
         outputVehiclesCsvPaths = new String[]{
                 "out/all_vehicles.csv",
                 "out/vehicle_26.csv",
                 "out/vehicle_27.csv"
         };
-        baseMapPath = "res/Map.jpg";
-        heatmapLegendPath = "res/heatmap_legend.png";
+        baseMapPath = "res/images/Map.jpg";
+        heatmapLegendPath = "res/images/heatmap_legend.png";
         outputHeatmapPaths = new String[]{
                 "out/Heatmap_RSSI.png",
                 "out/Heatmap_Throughput.png"
@@ -55,7 +57,7 @@ public class Main {
             System.out.println("Available options:");
             System.out.println(" -c : Convert XML files to CSV");
             System.out.println(" -g : Generate heatmaps from CSV files");
-            System.out.println(" -s : Edge Server functionality - Mosquitto must already be running");
+            System.out.println(" -s : Subscribe to vehicle MQTT topics - Mosquitto must already be running");
             System.out.println(" -h : This help menu");
         }
 
@@ -87,10 +89,14 @@ public class Main {
 
         if (argsList.contains("-s")) {
             try {
-                new ESSubscriber("V26sub", EdgeServer.getVehicleTopic(0));
-                new ESSubscriber("V27sub", EdgeServer.getVehicleTopic(1));
-//            } catch (ConnectException e) {
-//                System.err.println("Failed to connect to server; have you started Mosquitto?");
+                System.out.println("Listening to '" + EdgeServer.getVehicleTopic(0) + "' and '" + EdgeServer.getVehicleTopic(1) + "'");
+                ESSubscriber vs26sub = new ESSubscriber("V26sub", EdgeServer.getVehicleTopic(0));
+                ESSubscriber vs27sub = new ESSubscriber("V27sub", EdgeServer.getVehicleTopic(1));
+                System.out.println("Press Enter to terminate the Edge Server ...");
+                new Scanner(System.in).nextLine();
+                vs26sub.disconnect();
+                vs27sub.disconnect();
+                System.out.println("Disconnected from '" + EdgeServer.getVehicleTopic(0) + "' and '" + EdgeServer.getVehicleTopic(1) + "'");
             } catch (MqttException e) {
                 e.printStackTrace();
             }

@@ -40,6 +40,15 @@ public class TerminalSubscriber implements MqttCallback {
         this.client.publish(this.topic, message);
     }
 
+    public void disconnect() {
+        try {
+            client.disconnect();
+        } catch (MqttException e) {
+            System.err.println(clientId + " failed to disconnect");
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void connectionLost(Throwable cause) {
         System.out.println("Connection lost because: " + cause);

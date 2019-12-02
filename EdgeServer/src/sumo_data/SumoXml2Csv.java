@@ -24,13 +24,13 @@ public class SumoXml2Csv {
     private double max_lat;
     private double min_lon;
     private double max_lon;
+    private int minRSSI = 20;
+    private int maxRSSI = 100;
     private int meanRSSI = 60;
-    private int stdRSSI = 100;
+    private int stdRSSI = 100;      // change this to widen the margin between values
     private int maxLinkCapacity = 50;     // in Mbps
 
     private Random random;
-    private int minRSSI;
-    private int maxRSSI;
 
     public SumoXml2Csv(double min_lat, double max_lat, double min_lon, double max_lon) {
         this.min_lat = min_lat;
@@ -38,8 +38,6 @@ public class SumoXml2Csv {
         this.min_lon = min_lon;
         this.max_lon = max_lon;
         random = new Random();
-        minRSSI = meanRSSI - stdRSSI;
-        maxRSSI = meanRSSI + stdRSSI;
     }
 
     public double getMin_lat() {
@@ -103,10 +101,10 @@ public class SumoXml2Csv {
     }
 
     private int getRSSI() {
-        int gNum = (int) (random.nextGaussian() * stdRSSI) + meanRSSI;
-        if (gNum < minRSSI || gNum > maxRSSI) {
-            return getRSSI();
-        }
+        int gNum;
+        do {        // keep trying to get a value between the RSSI limits
+            gNum = (int) (random.nextGaussian() * stdRSSI) + meanRSSI;
+        } while (gNum < minRSSI || gNum > maxRSSI);
         return gNum;
     }
 

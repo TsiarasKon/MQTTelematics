@@ -8,7 +8,7 @@ public class TerminalPublisher {
     private final int port;
     private final String clientId;
     private final String topic;
-    private final int connectionTimeout = 4;
+    private final int connectionTimeout = 3;
     private final int qos = 2;
     private MqttClient client;
 
@@ -20,6 +20,7 @@ public class TerminalPublisher {
         MqttConnectOptions conOpt = new MqttConnectOptions();
         conOpt.setCleanSession(true);
         conOpt.setConnectionTimeout(connectionTimeout);
+        conOpt.setKeepAliveInterval(connectionTimeout);
         this.client = new MqttClient(getBroker(), clientId, new MemoryPersistence());
         this.client.connect(conOpt);
         this.client.subscribe(this.topic, qos);
@@ -33,15 +34,10 @@ public class TerminalPublisher {
         return "tcp://" + ipAddr + ':' + port;
     }
 
-    public void publishMessage(String messageStr) {
+    public void publishMessage(String messageStr) throws MqttException {
         MqttMessage message = new MqttMessage(messageStr.getBytes());
         message.setQos(qos);
-        try {
-            client.publish(topic, message);
-        } catch (MqttException e) {
-            System.err.println(clientId + " failed to send MQTT message to topic " + topic);
-            e.printStackTrace();
-        }
+        client.publish(topic, message);
     }
 
     public void disconnect() {

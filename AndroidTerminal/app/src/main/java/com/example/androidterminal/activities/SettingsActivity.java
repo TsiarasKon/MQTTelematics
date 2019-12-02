@@ -48,10 +48,10 @@ public class SettingsActivity extends AppCompatActivity {
                 public boolean onPreferenceChange(Preference preference, Object newValue) {
                     try {
                         int val = Integer.parseInt(newValue.toString());
-                        if (val >= 0 && val <= maxRuntime) {
+                        if (val > 0 && val <= maxRuntime) {
                             return true;
                         }
-                        Toast.makeText(getActivity(), "Maximum possible runtime is " + maxRuntime, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), "Runtime is a positive integer less than or equal to " + maxRuntime, Toast.LENGTH_LONG).show();
                         return false;
                     } catch (NumberFormatException e) {
                         Toast.makeText(getActivity(), "Runtime must be an integer", Toast.LENGTH_LONG).show();

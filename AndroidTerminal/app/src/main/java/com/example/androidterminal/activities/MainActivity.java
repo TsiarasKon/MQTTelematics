@@ -1,6 +1,8 @@
 package com.example.androidterminal.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -15,6 +17,7 @@ import androidx.preference.PreferenceManager;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Parcelable;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -33,12 +36,17 @@ import com.example.androidterminal.R;
 import com.example.androidterminal.network.TerminalPublisher;
 import com.example.androidterminal.utils.Utilities;
 
+import org.eclipse.paho.client.mqttv3.MqttException;
+
 import java.io.InputStream;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
-    private final int terminalId = 1;   // !! Change this to 0/1 for vehicle26/vehicle27 !!
+    private final int terminalId = 0;   // !! Change this to 0/1 for vehicle26/vehicle27 !!
+    private final String terminalName = (terminalId == 0) ? "v26Terminal" : "v27Terminal";
+    private final String terminal2esTopic = (terminalId == 0) ? "v26_ES/topic" : "v27_ES/topic";
+    private final String es2terminalTopic = (terminalId == 0) ? "ES_v26/topic" : "ES_v27/topic";        // unused for now
 
     private SharedPreferences prefs;
     private TextView runtimeText;
@@ -54,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
     private Runnable connectedRunnable;
     private Handler outterHandler;
     private Handler innerHandler = new Handler();
+    private Handler checkOnlineHandler = new Handler();
+    private Runnable checkOnlineRunnable;
+    private AlertDialog offlineAlert = null;
 
     private final String[] dataHeaders =
             {"Timestep", "Vehicle ID", "Latitude", "Longitude", "Angle", "Speed", "RSSI", "Throughput"};
@@ -63,11 +74,7 @@ public class MainActivity extends AppCompatActivity {
     private int maxRuntime = -1;
     private int timerInt = 0;
     private final int delay = 1000;     // milliseconds
-    private final int onlineCheckFrequency = 5;     // seconds
-
-    private final String terminalName = (terminalId == 0) ? "v26Terminal" : "v27Terminal";
-    private final String terminal2esTopic = (terminalId == 0) ? "v26_ES/topic" : "v27_ES/topic";
-    private final String es2terminalTopic = (terminalId == 0) ? "ES_v26/topic" : "ES_v27/topic";        // unused for now
+    private final int onlineCheckFrequency = 5000;     // milliseconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,16 +112,25 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(itemArrayAdapter);
         listView.onRestoreInstanceState(state);
         Utilities.resetItemArrayList(itemArrayAdapter, dataHeaders);
+
+        final Context con = this;
+        checkOnlineRunnable = new Runnable(){        // periodical online check
+            public void run(){
+                checkOnlineHandler.postDelayed(this, onlineCheckFrequency);
+                checkOnlineOrCreateDialog(con);
+            }
+        };
+        checkOnlineHandler.post(checkOnlineRunnable);
     }
 
-    public void startTransmission(View view) {
+    public void startTransmission(final View view) {
         if (timerInt > 0) {
             Toast.makeText(this, "Already transmitting", Toast.LENGTH_SHORT).show();
             return;
         }
         final Context con = this;
         if (! Utilities.isDeviceOnline(con)) {
-            Toast.makeText(this, "No internet Connection", Toast.LENGTH_SHORT).show();
+            createNetErrorDialog(con);
             return;
         }
         Utilities.toggleButtonActive(startButton);
@@ -132,10 +148,18 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Log.i(terminalName, "Connected successfully!");
                 Toast.makeText(getBaseContext(), "Connected to server!\nBeginning transmission ...", Toast.LENGTH_LONG).show();
-                esp.publishMessage("'" + terminalName + "' connected successfully; starting transmission of " + runtime + " datapoints");
+                runtime = Integer.parseInt(prefs.getString("runtime", maxRuntime+""));
+                try {
+                    esp.publishMessage("'" + terminalName + "' connected successfully; starting transmission of " + runtime + " datapoints");
+                } catch (MqttException e) {
+                    Log.e(terminalName, "Failed to publish MQTT message");
+                    checkOnlineOrCreateDialog(con);
+                    abortTransmission(view.getRootView());
+                    e.printStackTrace();
+                    return;
+                }
                 Utilities.toggleButtonActive(stopButton);
 
-                runtime = Integer.parseInt(prefs.getString("runtime", maxRuntime+""));
                 runtimeText.setText("Transmitting datapoints...    |    " + timerInt + "/" + runtime);
                 dataProgressBar.setMax(runtime);
                 dataProgressBar.setProgress(0);
@@ -143,8 +167,15 @@ public class MainActivity extends AppCompatActivity {
 
                 innerHandler.postDelayed(new Runnable(){        // every second send a datapoint
                     public void run(){
-                        if (timerInt % onlineCheckFrequency == 0) Utilities.isDeviceOnline(con);
-                        esp.publishMessage(TextUtils.join(",", dataList.get(timerInt)));
+                        try {
+                            esp.publishMessage(TextUtils.join(",", dataList.get(timerInt)));
+                        } catch (MqttException e) {
+                            Log.e(terminalName, "Failed to publish MQTT message");
+                            checkOnlineOrCreateDialog(con);
+                            abortTransmission(view.getRootView());
+                            e.printStackTrace();
+                            return;
+                        }
                         itemArrayAdapter.clear();
                         for (int i = 0; i < dataHeaders.length; i++ ) {
                             String[] row = {dataHeaders[i], dataList.get(timerInt)[i]};
@@ -161,7 +192,12 @@ public class MainActivity extends AppCompatActivity {
                             innerHandler.postDelayed(this, delay);      // reinstate the handler for the next datapoint
                         } else {
                             runtimeText.setText("Transmission complete!\nAll " + runtime + " datapoints were sent successfully!");
-                            esp.publishMessage("Transmission of " + runtime + " datapoints from '" + terminalName + "' completed successfully!");
+                            try {
+                                esp.publishMessage("Transmission of " + runtime + " datapoints from '" + terminalName + "' completed successfully!");
+                            } catch (MqttException e) {
+                                Log.e(terminalName, "Failed to publish MQTT message");
+                                e.printStackTrace();
+                            }
                             Utilities.toggleButtonActive(stopButton);
                             Utilities.toggleButtonActive(startButton);
                             runningFlag = false;
@@ -172,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        Handler outterHandler = new Handler() {
+        outterHandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {    // used to be notified of AsyncConnect's completion
                 switch (msg.what) {
@@ -206,13 +242,67 @@ public class MainActivity extends AppCompatActivity {
             innerHandler.removeCallbacksAndMessages(null);
             runtimeText.setText("Transmission was stopped    |    " + timerInt + "/" + runtime);
             timerInt = 0;
-            esp.publishMessage("Transmission from '" + terminalName + "' was stopped");
+            try {
+                esp.publishMessage("Transmission from '" + terminalName + "' was stopped");
+            } catch (MqttException e) {
+                Log.e(terminalName, "Failed to publish MQTT message");
+                e.printStackTrace();
+            }
             Utilities.toggleButtonActive(stopButton);
             Utilities.toggleButtonActive(startButton);
             runningFlag = false;
         } else {
             Toast.makeText(this, "No active transmission to be stopped", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void abortTransmission(View view) {
+        if (timerInt > 0) {
+            innerHandler.removeCallbacksAndMessages(null);
+            runtimeText.setText("Transmission was aborted    |    " + timerInt + "/" + runtime);
+            timerInt = 0;
+            Utilities.toggleButtonActive(stopButton);
+            Utilities.toggleButtonActive(startButton);
+            runningFlag = false;
+        }
+    }
+
+    public void checkOnlineOrCreateDialog(Context con) {
+        checkOnlineHandler.removeCallbacksAndMessages(null);
+        if (! Utilities.isDeviceOnline(con)) {
+            createNetErrorDialog(con);
+        } else {
+            checkOnlineHandler.postDelayed(checkOnlineRunnable, onlineCheckFrequency);
+        }
+    }
+
+    public void createNetErrorDialog(Context con) {
+        AlertDialog.Builder offlineAlertBuilder = new AlertDialog.Builder(con);
+        offlineAlertBuilder.setMessage("You need a network connection to transmit vehicle datapoints.\nPlease turn on mobile network or Wi-Fi in Android Settings.")
+                .setTitle("No Internet Connection")
+                .setCancelable(false)
+                .setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent i = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
+                        startActivity(i);
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                        checkOnlineHandler.postDelayed(checkOnlineRunnable, onlineCheckFrequency);
+                    }
+                });
+        offlineAlert = offlineAlertBuilder.create();
+        offlineAlert.show();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkOnlineHandler.postDelayed(checkOnlineRunnable, onlineCheckFrequency);
+        if (offlineAlert != null && Utilities.isDeviceOnline(this))
+            offlineAlert.hide();
     }
 
     @Override
@@ -248,5 +338,21 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (esp != null) {
+            if (timerInt > 0) {
+                try {
+                    esp.publishMessage("Transmission from '" + terminalName + "' was stopped");
+                } catch (MqttException e) {
+                    Log.e(terminalName, "Failed to publish MQTT message");
+                    e.printStackTrace();
+                }
+            }
+            esp.disconnect();
+        }
+        super.onDestroy();
     }
 }
