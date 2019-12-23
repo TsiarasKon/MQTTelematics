@@ -1,35 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e4330e5-b718-49ed-867a-90e00715f7b1" name="Default Changelist" comment="Heatmap generation improvements">
-      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/SettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/SettingsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/network/TerminalPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/network/TerminalPublisher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/network/TerminalSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/network/TerminalSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/utils/Utilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/utils/Utilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/Map.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/Map.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/all_vehicles.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/vehicle_26.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/EdgeServer/out/production/AlnProject/vehicle_27.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/Heatmap_RSSI.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/Heatmap_RSSI.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/Heatmap_Throughput.png" beforeDir="false" afterPath="$PROJECT_DIR$/out/Heatmap_Throughput.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/all_vehicles.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/all_vehicles.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/vehicle_26.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/vehicle_26.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/vehicle_27.csv" beforeDir="false" afterPath="$PROJECT_DIR$/out/vehicle_27.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Map.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/res/images/Map.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/Map.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/all_vehicles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/xml/all_vehicles.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/heatmap_legend.png" beforeDir="false" afterPath="$PROJECT_DIR$/res/images/heatmap_legend.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/vehicle_26.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/xml/vehicle_26.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/res/vehicle_27.xml" beforeDir="false" afterPath="$PROJECT_DIR$/res/xml/vehicle_27.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network/ESPublisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/ESPublisher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network/ESSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/ESSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sumo_data/SumoXml2Csv.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sumo_data/SumoXml2Csv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/README.txt" beforeDir="false" />
-    </list>
+    <list default="true" id="2e4330e5-b718-49ed-867a-90e00715f7b1" name="Default Changelist" comment="Heatmap generation improvements" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +14,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1960">
+            <state relative-caret-position="1720">
               <caret line="98" column="140" selection-start-line="98" selection-start-column="140" selection-end-line="98" selection-end-column="140" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -54,7 +26,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sumo_data/Heatmap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2200">
+            <state relative-caret-position="2060">
               <caret line="110" selection-start-line="110" selection-end-line="110" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -66,7 +38,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/network/ESSubscriber.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
+            <state relative-caret-position="560">
               <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -143,6 +115,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -230,7 +203,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -335,6 +307,7 @@
       <workItem from="1575031812836" duration="757000" />
       <workItem from="1575032756408" duration="9000" />
       <workItem from="1575281417357" duration="469000" />
+      <workItem from="1575457370595" duration="146000" />
     </task>
     <task id="LOCAL-00001" summary="Xml2csv converter&#10;&#10;* lacks RSSI and throughput&#10;* commit includes provided resources">
       <created>1572287602872</created>
@@ -389,12 +362,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114812000" />
+    <option name="totallyTimeSpent" value="114958000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1272" y="0" width="1294" height="1408" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26337114" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2682334" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -535,10 +509,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/out/vehicle_27.csv">
+      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
-      <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/saved.png" />
     <entry file="file://$PROJECT_DIR$/java-heat-chartt2.png" />
@@ -555,10 +529,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/out/vehicle_26.csv">
+      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
-      <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/org.eclipse.paho.client.mqttv3.jar!/org/eclipse/paho/client/mqttv3/internal/TCPNetworkModule.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -627,7 +601,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1960">
+        <state relative-caret-position="1720">
           <caret line="98" column="140" selection-start-line="98" selection-start-column="140" selection-end-line="98" selection-end-column="140" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -637,7 +611,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sumo_data/Heatmap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2200">
+        <state relative-caret-position="2060">
           <caret line="110" selection-start-line="110" selection-end-line="110" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -647,7 +621,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/network/ESSubscriber.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
+        <state relative-caret-position="560">
           <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />

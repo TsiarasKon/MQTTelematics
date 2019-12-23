@@ -37,12 +37,4 @@ public class Utilities {
             b.setClickable(true);
         }
     }
-
-    public static void resetItemArrayList(ItemArrayAdapter adapter, String[] dataHeaders) {
-        adapter.clear();
-        for (String header : dataHeaders) {
-            String[] row = {header, "-"};
-            adapter.add(row);
-        }
-    }
 }
