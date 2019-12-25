@@ -36,24 +36,21 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.Dot;
-import com.google.android.gms.maps.model.Gap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PatternItem;
 import com.google.android.gms.maps.model.Polyline;
 
 import org.eclipse.paho.client.mqttv3.MqttException;
 
 import java.io.InputStream;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback,
-        GoogleMap.OnPolylineClickListener {
-    private final int terminalId = 1;   // !! Change this to 0/1 for vehicle26/vehicle27 !!
+public class MainActivity extends AppCompatActivity {
+    private final int terminalId = 0;   // !! Change this to 0/1 for vehicle26/vehicle27 !!
     private final String terminalName = (terminalId == 0) ? "v26Terminal" : "v27Terminal";
     private final String terminal2esTopic = (terminalId == 0) ? "v26_ES/topic" : "v27_ES/topic";
     private final String es2terminalTopic = (terminalId == 0) ? "ES_v26/topic" : "ES_v27/topic";        // unused for now
@@ -70,6 +67,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private SupportMapFragment mapFragmentReal;
     private SupportMapFragment mapFragmentPredicted;
     private Polyline polyline1;
+    private Marker currMarkReal;
+    private List<Marker> markersReal = new ArrayList<>();
+    private Marker currMarkPredicted;
+    private List<Marker> markersPredicted = new ArrayList<>();
 
     private AsyncConnect asyncConnect;
     private TerminalPublisher esp = null;
@@ -149,6 +150,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         Utilities.toggleButtonActive(startButton);
         runningFlag = true;
 
+        // reset maps' camera positions, remove markers:
+        for (Marker m : markersReal) {
+            m.remove();
+        }
+        markersReal.clear();
+        for (Marker m : markersPredicted) {
+            m.remove();
+        }
+        markersPredicted.clear();
+        currMarkReal = currMarkPredicted = null;
+        mMapReal.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.96775 + 0.0005, 23.770075), 15));
+        mMapPredicted.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.96775 + 0.0005, 23.770075), 15));
+
         connectedRunnable = new Runnable() {
             @Override
             public void run() {
@@ -181,18 +195,32 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     public void run(){
                         try {
                             esp.publishMessage(TextUtils.join(",", dataList.get(timerInt)));
-                            Marker mark = mMapReal.addMarker(new MarkerOptions()
+
+                            if (currMarkReal != null) currMarkReal.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.dot_blue));
+                            currMarkReal = mMapReal.addMarker(new MarkerOptions()
                                     .position(new LatLng(Double.parseDouble(dataList.get(timerInt)[2]), Double.parseDouble(dataList.get(timerInt)[3])))
+                                    .anchor(0.5f, 1)
+                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
                                     .title("(" + dataList.get(timerInt)[2] + ", " + dataList.get(timerInt)[3] + ")")
                                     .snippet("RSSI: " + dataList.get(timerInt)[6] + "  |  Throughput: " + dataList.get(timerInt)[7])
                             );
-                            mark.showInfoWindow();
-                            Marker mark2 = mMapPredicted.addMarker(new MarkerOptions()
+                            currMarkReal.showInfoWindow();
+                            markersReal.add(currMarkReal);
+//                            mMapReal.animateCamera(CameraUpdateFactory.zoomBy(0.0000001f));
+
+                            if (currMarkPredicted != null) currMarkPredicted.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.dot_orange));
+                            currMarkPredicted = mMapPredicted.addMarker(new MarkerOptions()
                                     .position(new LatLng(Double.parseDouble(dataList.get(timerInt)[2]) + 0.0002, Double.parseDouble(dataList.get(timerInt)[3]) + 0.0002))
+                                    .anchor(0.5f, 1)
+                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
                                     .title("(" + dataList.get(timerInt)[2] + ", " + dataList.get(timerInt)[3] + ")")
                                     .snippet("RSSI: " + dataList.get(timerInt)[6] + "  |  Throughput: " + dataList.get(timerInt)[7])
                             );
-                            mark2.showInfoWindow();
+                            currMarkPredicted.showInfoWindow();
+                            markersPredicted.add(currMarkPredicted);
+//                            mMapPredicted.animateCamera(CameraUpdateFactory.zoomBy(0.0000001f));
+
+
                         } catch (MqttException e) {
                             Log.e(terminalName, "Failed to publish MQTT message");
                             checkOnlineOrCreateDialog(con);
@@ -375,66 +403,30 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onDestroy();
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMapReal = googleMap;
-        //mMap.getUiSettings().setCompassEnabled(true);
-
-//        polyline1 = googleMap.addPolyline(new PolylineOptions()
-//                .clickable(true)
-//                .add(
-//                        new LatLng(-35.016, 143.321),
-//                        new LatLng(-34.747, 145.592),
-//                        new LatLng(-34.364, 147.891),
-//                        new LatLng(-33.501, 150.217),
-//                        new LatLng(-32.306, 149.248)));
-//        mMap.addPolyline(new PolylineOptions()
-//                .clickable(true)
-//                .add(
-//                        new LatLng(-32.306, 149.248),
-//                        new LatLng(-32.491, 147.309)));
-
-//        mMap.addMarker(new MarkerOptions()
-//                .position(new LatLng(Double.parseDouble(dataList.get(0)[2]), Double.parseDouble(dataList.get(0)[3])))
-//        );
-
-
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.96775, 23.770075), 15.7f));
-
-//        IconGenerator iconFactory = new IconGenerator(this);
-//        Marker mMarkerA = mMap.addMarker(new MarkerOptions().position(new LatLng(12, 34)));
-//        mMarkerA.setIcon(BitmapDescriptorFactory.fromBitmap(iconFactory.makeIcon("Marker A")));
-//        Marker mMarkerB = mMap.addMarker(new MarkerOptions().position(new LatLng(13, 35)));
-//        mMarkerB.setIcon(BitmapDescriptorFactory.fromBitmap(iconFactory.makeIcon("Marker B")));
-//        mMarkerA.setIcon(null);
-//        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(12, 34), 5));
-
-        googleMap.setOnPolylineClickListener(this);
-    }
-
-    private static final PatternItem DOT = new Dot();
-    private static final PatternItem GAP = new Gap(100);
-    //
-// Create a stroke pattern of a gap followed by a dot.
-    private static final List<PatternItem> PATTERN_POLYLINE_DOTTED = Arrays.asList(GAP, DOT);
-
-    @Override
-    public void onPolylineClick(Polyline polyline) {
-        // Flip from solid stroke to dotted stroke pattern.
-        if ((polyline.getPattern() == null) || (!polyline.getPattern().contains(DOT))) {
-            polyline.setPattern(PATTERN_POLYLINE_DOTTED);
-        } else {
-            // The default pattern is a solid stroke.
-            polyline.setPattern(null);
-        }
-    }
 
     public OnMapReadyCallback onMapReadyCallbackReal(){
         return new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 mMapReal = googleMap;
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.96775, 23.770075), 15));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.96775 + 0.0005, 23.770075), 15));
+
+//                Polyline polyline = mMapReal.addPolyline(new PolylineOptions()
+//                        .width(5)
+//                        .add(
+//                                new LatLng(Double.parseDouble(dataList.get(0)[2]), Double.parseDouble(dataList.get(0)[3])),
+//                                new LatLng(Double.parseDouble(dataList.get(1)[2]), Double.parseDouble(dataList.get(1)[3])),
+//                                new LatLng(Double.parseDouble(dataList.get(2)[2]), Double.parseDouble(dataList.get(2)[3])),
+//                                new LatLng(Double.parseDouble(dataList.get(3)[2]), Double.parseDouble(dataList.get(3)[3])),
+//                                new LatLng(Double.parseDouble(dataList.get(4)[2]), Double.parseDouble(dataList.get(4)[3])),
+//                                new LatLng(Double.parseDouble(dataList.get(5)[2]), Double.parseDouble(dataList.get(5)[3])),
+//                                new LatLng(Double.parseDouble(dataList.get(6)[2]), Double.parseDouble(dataList.get(6)[3])),
+//                                new LatLng(Double.parseDouble(dataList.get(7)[2]), Double.parseDouble(dataList.get(7)[3])),
+//                                new LatLng(Double.parseDouble(dataList.get(8)[2]), Double.parseDouble(dataList.get(8)[3])),
+//                                new LatLng(Double.parseDouble(dataList.get(9)[2]), Double.parseDouble(dataList.get(9)[3]))
+//                        ));
+//                        polyline.setStartCap(new RoundCap());
+//                        polyline.setColor(Color.CYAN);
             }
         };
     }
@@ -444,7 +436,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 mMapPredicted = googleMap;
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.96775, 23.770075), 15));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.96775 + 0.0005, 23.770075), 15));
             }
         };
     }

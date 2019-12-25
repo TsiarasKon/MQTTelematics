@@ -12,8 +12,8 @@
         android:id="@+id/startButton"
         android:layout_width="130dp"
         android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="8dp"
         android:background="@color/buttonGreen"
         android:onClick="startTransmission"
@@ -26,8 +26,8 @@
         android:layout_width="130dp"
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginRight="12dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:background="@color/buttonOrange"
         android:onClick="stopTransmission"
         android:text="@string/button_stop"
@@ -91,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/startButton">
 
         <fragment
-            android:id="@+id/map2"
+            android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
@@ -106,7 +106,7 @@
             android:background="?android:attr/listDivider" />
 
         <fragment
-            android:id="@+id/map"
+            android:id="@+id/map2"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
