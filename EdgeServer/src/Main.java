@@ -1,6 +1,7 @@
 import network.ESSubscriber;
 import network.EdgeServer;
 import sumo_data.Heatmap;
+import sumo_data.Predictor;
 import sumo_data.SumoCsvReader;
 import sumo_data.SumoXml2Csv;
 
@@ -73,30 +74,42 @@ public class Main {
             sumoConverter.xml2csvConvert(vehiclesXmlPaths[2], outputVehiclesCsvPaths[2]);
         }
 
+        Heatmap heatmapRSSI = null;
+        Heatmap heatmapThroughput = null;
+
         if (argsList.contains("-g")) {
             System.out.println("Loading data from '" + outputVehiclesCsvPaths[0] + "' ...");
             SumoCsvReader sumoReader = new SumoCsvReader(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells);
             sumoReader.readCsv(outputVehiclesCsvPaths[0]);
 
             System.out.println("Creating RSSI heatmap at '" + outputHeatmapPaths[0] + "' ...");
-            Heatmap heatmapRSSI = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getRssiCellMap());
+            heatmapRSSI = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getRssiCellMap());
             heatmapRSSI.generateHeatmap(baseMapPath, outputHeatmapPaths[0], heatmapLegendPath);
 
             System.out.println("Creating Throughput heatmap at '" + outputHeatmapPaths[1] + "' ...");
-            Heatmap heatmapThroughput = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getThroughputCellMap());
+            heatmapThroughput = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getThroughputCellMap());
             heatmapThroughput.generateHeatmap(baseMapPath, outputHeatmapPaths[1],heatmapLegendPath);
         }
 
         if (argsList.contains("-s")) {
+            if (!argsList.contains("-g")) {     // heatmaps were not previously created but we still need them
+                SumoCsvReader sumoReader = new SumoCsvReader(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells);
+                heatmapRSSI = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getRssiCellMap());
+                heatmapThroughput = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getThroughputCellMap());
+            }
+
+            Predictor v26Predictor = new Predictor(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells, heatmapRSSI, heatmapThroughput);
+            Predictor v27Predictor = new Predictor(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells, heatmapRSSI, heatmapThroughput);
+
             try {
-                System.out.println("Listening to '" + EdgeServer.getVehicleTopic(0) + "' and '" + EdgeServer.getVehicleTopic(1) + "'");
-                ESSubscriber vs26sub = new ESSubscriber("V26sub", EdgeServer.getVehicleTopic(0));
-                ESSubscriber vs27sub = new ESSubscriber("V27sub", EdgeServer.getVehicleTopic(1));
+                System.out.println("Listening to '" + EdgeServer.getV2ESTopic(0) + "' and '" + EdgeServer.getV2ESTopic(1) + "'");
+                ESSubscriber vs26sub = new ESSubscriber("ES_V26", EdgeServer.getV2ESTopic(0), EdgeServer.getES2VTopic(0), v26Predictor);
+                ESSubscriber vs27sub = new ESSubscriber("ES_V27", EdgeServer.getV2ESTopic(1), EdgeServer.getES2VTopic(1), v27Predictor);
                 System.out.println("Press Enter to terminate the Edge Server ...");
                 new Scanner(System.in).nextLine();
                 vs26sub.disconnect();
                 vs27sub.disconnect();
-                System.out.println("Disconnected from '" + EdgeServer.getVehicleTopic(0) + "' and '" + EdgeServer.getVehicleTopic(1) + "'");
+                System.out.println("Disconnected from '" + EdgeServer.getV2ESTopic(0) + "' and '" + EdgeServer.getV2ESTopic(1) + "'");
             } catch (MqttException e) {
                 e.printStackTrace();
             }

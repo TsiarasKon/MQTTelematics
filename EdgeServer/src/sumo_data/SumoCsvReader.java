@@ -49,7 +49,7 @@ public class SumoCsvReader {
         return throughputCellMap;
     }
 
-    private int getCellMapIndex(double val, double minL, double maxL, int cellsNum) {
+    public static int getCellMapIndex(double val, double minL, double maxL, int cellsNum) {
         if (val < minL || val > maxL) {     // should never get here:
             System.err.println("Unexpected value out of lat/lon limits found in cellMap");
         }

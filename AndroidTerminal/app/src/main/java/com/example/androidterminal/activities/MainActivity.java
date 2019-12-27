@@ -27,6 +27,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.androidterminal.network.TerminalSubscriber;
 import com.example.androidterminal.utils.AsyncConnect;
 import com.example.androidterminal.utils.CSVFileReader;
 import com.example.androidterminal.R;
@@ -40,7 +41,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
 
 import org.eclipse.paho.client.mqttv3.MqttException;
 
@@ -50,7 +50,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
-    private final int terminalId = 0;   // !! Change this to 0/1 for vehicle26/vehicle27 !!
+    private final int terminalId = 1;   // !! Change this to 0/1 for vehicle26/vehicle27 !!
     private final String terminalName = (terminalId == 0) ? "v26Terminal" : "v27Terminal";
     private final String terminal2esTopic = (terminalId == 0) ? "v26_ES/topic" : "v27_ES/topic";
     private final String es2terminalTopic = (terminalId == 0) ? "ES_v26/topic" : "ES_v27/topic";        // unused for now
@@ -66,14 +66,12 @@ public class MainActivity extends AppCompatActivity {
     private GoogleMap mMapPredicted;
     private SupportMapFragment mapFragmentReal;
     private SupportMapFragment mapFragmentPredicted;
-    private Polyline polyline1;
     private Marker currMarkReal;
     private List<Marker> markersReal = new ArrayList<>();
-    private Marker currMarkPredicted;
-    private List<Marker> markersPredicted = new ArrayList<>();
 
     private AsyncConnect asyncConnect;
     private TerminalPublisher esp = null;
+    private TerminalSubscriber ess = null;
     private Runnable connectedRunnable;
     private Handler outterHandler;
     private Handler innerHandler = new Handler();
@@ -155,11 +153,8 @@ public class MainActivity extends AppCompatActivity {
             m.remove();
         }
         markersReal.clear();
-        for (Marker m : markersPredicted) {
-            m.remove();
-        }
-        markersPredicted.clear();
-        currMarkReal = currMarkPredicted = null;
+        currMarkReal = null;
+        if (ess != null) ess.clearMapMarkers();
         mMapReal.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.96775 + 0.0005, 23.770075), 15));
         mMapPredicted.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.96775 + 0.0005, 23.770075), 15));
 
@@ -177,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getBaseContext(), "Connected to server!\nBeginning transmission ...", Toast.LENGTH_LONG).show();
                 runtime = Integer.parseInt(prefs.getString("runtime", maxRuntime+""));
                 try {
-                    esp.publishMessage("'" + terminalName + "' connected successfully; starting transmission of " + runtime + " datapoints");
+                    esp.publishMessage("$'" + terminalName + "' connected successfully; starting transmission of " + runtime + " datapoints");
                 } catch (MqttException e) {
                     Log.e(terminalName, "Failed to publish MQTT message");
                     checkOnlineOrCreateDialog(con);
@@ -208,19 +203,6 @@ public class MainActivity extends AppCompatActivity {
                             markersReal.add(currMarkReal);
 //                            mMapReal.animateCamera(CameraUpdateFactory.zoomBy(0.0000001f));
 
-                            if (currMarkPredicted != null) currMarkPredicted.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.dot_orange));
-                            currMarkPredicted = mMapPredicted.addMarker(new MarkerOptions()
-                                    .position(new LatLng(Double.parseDouble(dataList.get(timerInt)[2]) + 0.0002, Double.parseDouble(dataList.get(timerInt)[3]) + 0.0002))
-                                    .anchor(0.5f, 1)
-                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
-                                    .title("(" + dataList.get(timerInt)[2] + ", " + dataList.get(timerInt)[3] + ")")
-                                    .snippet("RSSI: " + dataList.get(timerInt)[6] + "  |  Throughput: " + dataList.get(timerInt)[7])
-                            );
-                            currMarkPredicted.showInfoWindow();
-                            markersPredicted.add(currMarkPredicted);
-//                            mMapPredicted.animateCamera(CameraUpdateFactory.zoomBy(0.0000001f));
-
-
                         } catch (MqttException e) {
                             Log.e(terminalName, "Failed to publish MQTT message");
                             checkOnlineOrCreateDialog(con);
@@ -240,7 +222,7 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             runtimeText.setText("Transmission complete!\nAll " + runtime + " datapoints were sent successfully!");
                             try {
-                                esp.publishMessage("Transmission of " + runtime + " datapoints from '" + terminalName + "' completed successfully!");
+                                esp.publishMessage("$Transmission of " + runtime + " datapoints from '" + terminalName + "' completed successfully!");
                             } catch (MqttException e) {
                                 Log.e(terminalName, "Failed to publish MQTT message");
                                 e.printStackTrace();
@@ -281,6 +263,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }).start();
+        if (ess == null) {
+            try {
+                ess = new TerminalSubscriber(terminalName, prefs.getString("ipAddr", null), Integer.parseInt(prefs.getString("port", 1883 + "")), es2terminalTopic, this, mMapPredicted);
+            } catch (MqttException e) {
+                Log.e(terminalName, "Failed to subscribe to MQTT topic '" + es2terminalTopic + "'");
+                e.printStackTrace();
+            }
+        }
         outterHandler.postDelayed(connectedRunnable, 10000);    // will be resumed early if connected
     }
 
@@ -290,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
             runtimeText.setText("Transmission was stopped    |    " + timerInt + "/" + runtime);
             timerInt = 0;
             try {
-                esp.publishMessage("Transmission from '" + terminalName + "' was stopped");
+                esp.publishMessage("$Transmission from '" + terminalName + "' was stopped");
             } catch (MqttException e) {
                 Log.e(terminalName, "Failed to publish MQTT message");
                 e.printStackTrace();
@@ -392,13 +382,16 @@ public class MainActivity extends AppCompatActivity {
         if (esp != null) {
             if (timerInt > 0) {
                 try {
-                    esp.publishMessage("Transmission from '" + terminalName + "' was stopped");
+                    esp.publishMessage("$Transmission from '" + terminalName + "' was stopped");
                 } catch (MqttException e) {
                     Log.e(terminalName, "Failed to publish MQTT message");
                     e.printStackTrace();
                 }
             }
             esp.disconnect();
+        }
+        if (ess != null) {
+            ess.disconnect();
         }
         super.onDestroy();
     }

@@ -109,6 +109,10 @@ public class Heatmap {
         return cellMapAvg / nonEmptyCellNum;
     }
 
+    public double getPointVal(int latIndex, int lonIndex) {
+        return cellMap[latIndex][lonIndex];
+    }
+
     private void normalizeEmptyCells() {
         double cellMapAvg = getCellMapAvg();
         for (int i = 0; i < cellMap.length; i++)

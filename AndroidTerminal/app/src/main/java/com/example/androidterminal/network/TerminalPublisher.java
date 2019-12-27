@@ -13,7 +13,7 @@ public class TerminalPublisher {
     private MqttClient client;
 
     public TerminalPublisher(String clientId, String ipAddr, int port, String topic) throws MqttException {
-        this.clientId = clientId;
+        this.clientId = clientId + "_pub";
         this.ipAddr = ipAddr;
         this.port = port;
         this.topic = topic;
@@ -21,7 +21,7 @@ public class TerminalPublisher {
         conOpt.setCleanSession(true);
         conOpt.setConnectionTimeout(connectionTimeout);
         conOpt.setKeepAliveInterval(connectionTimeout);
-        this.client = new MqttClient(getBroker(), clientId, new MemoryPersistence());
+        this.client = new MqttClient(getBroker(), this.clientId, new MemoryPersistence());
         this.client.connect(conOpt);
         this.client.subscribe(this.topic, qos);
     }
