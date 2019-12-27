@@ -9,7 +9,7 @@ public final class EdgeServer {
     private static final boolean fullDateFormat = false;
 
     private static final String[] vehicle2esTopics = {"v26_ES/topic", "v27_ES/topic"};
-    private static final String[] es2vehicleTopics = {"ES_v26/topic", "ES_v27/topic"};     // unused for now
+    private static final String[] es2vehicleTopics = {"ES_v26/topic", "ES_v27/topic"};
 
     private EdgeServer() {      // we don't want instances of this class
     }
@@ -26,11 +26,20 @@ public final class EdgeServer {
         return "tcp://" + ipAddr + ':' + port;
     }
 
-    public static String getVehicleTopic(int index) {
+    public static String getV2ESTopic(int index) {
         try {
             return vehicle2esTopics[index];
         } catch (IndexOutOfBoundsException e) {
-            System.err.println("Tried to getVehicleTopic(index) with invalid index!");
+            System.err.println("Tried to getV2ESTopic(index) with invalid index!");
+            return null;
+        }
+    }
+
+    public static String getES2VTopic(int index) {
+        try {
+            return es2vehicleTopics[index];
+        } catch (IndexOutOfBoundsException e) {
+            System.err.println("Tried to getES2VTopic(index) with invalid index!");
             return null;
         }
     }

@@ -1,3 +1,5 @@
+import database.DBBridge;
+import database.DBDatapoint;
 import network.ESSubscriber;
 import network.EdgeServer;
 import sumo_data.Heatmap;
@@ -14,6 +16,7 @@ import java.util.Scanner;
 import org.eclipse.paho.client.mqttv3.MqttException;
 
 public class Main {
+    private static final Integer[] terminalIds;
     private static final String[] vehiclesXmlPaths;
     private static final String[] outputVehiclesCsvPaths;
     private static final String baseMapPath;
@@ -27,6 +30,7 @@ public class Main {
     private static final int heatmapWidthCells;
 
     static {
+        terminalIds = new Integer[]{ 26, 27 };
         vehiclesXmlPaths = new String[]{
                 "res/xml/all_vehicles.xml",
                 "res/xml/vehicle_26.xml",
@@ -74,44 +78,53 @@ public class Main {
             sumoConverter.xml2csvConvert(vehiclesXmlPaths[2], outputVehiclesCsvPaths[2]);
         }
 
-        Heatmap heatmapRSSI = null;
-        Heatmap heatmapThroughput = null;
+        SumoCsvReader sumoReader = null;
 
         if (argsList.contains("-g")) {
             System.out.println("Loading data from '" + outputVehiclesCsvPaths[0] + "' ...");
-            SumoCsvReader sumoReader = new SumoCsvReader(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells);
+            sumoReader = new SumoCsvReader(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells);
             sumoReader.readCsv(outputVehiclesCsvPaths[0]);
 
             System.out.println("Creating RSSI heatmap at '" + outputHeatmapPaths[0] + "' ...");
-            heatmapRSSI = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getRssiCellMap());
+            Heatmap heatmapRSSI = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getRssiCellMap());
             heatmapRSSI.generateHeatmap(baseMapPath, outputHeatmapPaths[0], heatmapLegendPath);
 
             System.out.println("Creating Throughput heatmap at '" + outputHeatmapPaths[1] + "' ...");
-            heatmapThroughput = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getThroughputCellMap());
+            Heatmap heatmapThroughput = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getThroughputCellMap());
             heatmapThroughput.generateHeatmap(baseMapPath, outputHeatmapPaths[1],heatmapLegendPath);
         }
 
         if (argsList.contains("-s")) {
-            if (!argsList.contains("-g")) {     // heatmaps were not previously created but we still need them
-                SumoCsvReader sumoReader = new SumoCsvReader(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells);
-                heatmapRSSI = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getRssiCellMap());
-                heatmapThroughput = new Heatmap(heatmapHeightCells, heatmapWidthCells, sumoReader.getThroughputCellMap());
+            if (!argsList.contains("-g")) {     // heatmap cellMaps were not previously created but we still need them
+                sumoReader = new SumoCsvReader(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells);
+                sumoReader.readCsv(outputVehiclesCsvPaths[0]);
             }
 
-            Predictor v26Predictor = new Predictor(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells, heatmapRSSI, heatmapThroughput);
-            Predictor v27Predictor = new Predictor(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells, heatmapRSSI, heatmapThroughput);
+            Predictor v26Predictor = new Predictor(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells, sumoReader.getRssiCellMap(), sumoReader.getThroughputCellMap());
+            Predictor v27Predictor = new Predictor(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells, sumoReader.getRssiCellMap(), sumoReader.getThroughputCellMap());
+
+            // clear db first
+            DBBridge db = new DBBridge();
+            db.truncateAllDatapoints();
 
             try {
                 System.out.println("Listening to '" + EdgeServer.getV2ESTopic(0) + "' and '" + EdgeServer.getV2ESTopic(1) + "'");
-                ESSubscriber vs26sub = new ESSubscriber("ES_V26", EdgeServer.getV2ESTopic(0), EdgeServer.getES2VTopic(0), v26Predictor);
-                ESSubscriber vs27sub = new ESSubscriber("ES_V27", EdgeServer.getV2ESTopic(1), EdgeServer.getES2VTopic(1), v27Predictor);
+                ESSubscriber vs26sub = new ESSubscriber("ES_V26", terminalIds[0], EdgeServer.getV2ESTopic(0), EdgeServer.getES2VTopic(0), v26Predictor);
+                ESSubscriber vs27sub = new ESSubscriber("ES_V27", terminalIds[1], EdgeServer.getV2ESTopic(1), EdgeServer.getES2VTopic(1), v27Predictor);
                 System.out.println("Press Enter to terminate the Edge Server ...");
                 new Scanner(System.in).nextLine();
                 vs26sub.disconnect();
                 vs27sub.disconnect();
                 System.out.println("Disconnected from '" + EdgeServer.getV2ESTopic(0) + "' and '" + EdgeServer.getV2ESTopic(1) + "'");
+
+//                List<DBDatapoint> list = db.getTerminalRealPredictedLatLons(terminalIds[0]);
+//                // TODO: visualize errors (check if null for first and null row!)
+//                list = db.getTerminalRealPredictedLatLons(terminalIds[1]);
+//                // TODO
             } catch (MqttException e) {
                 e.printStackTrace();
+            } finally {
+                db.close();
             }
         }
     }

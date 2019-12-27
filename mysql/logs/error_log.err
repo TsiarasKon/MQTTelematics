@@ -32,3 +32,26 @@
 2019-11-19T10:03:20.034312Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
 2019-11-19T10:03:20.065882Z 0 [System] [MY-010931] [Server] K:\MyProjects\AlnProject\mysql\mysql-8.0.18-winx64\bin\mysqld.exe: ready for connections. Version: '8.0.18'  socket: ''  port: 3306  MySQL Community Server - GPL.
 2019-11-19T10:03:20.291442Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
+2019-12-27T22:51:10.554881Z 0 [Warning] [MY-010915] [Server] 'NO_ZERO_DATE', 'NO_ZERO_IN_DATE' and 'ERROR_FOR_DIVISION_BY_ZERO' sql modes should be used with strict mode. They will be merged with strict mode in a future release.
+2019-12-27T22:51:10.555004Z 0 [System] [MY-010116] [Server] K:\MyProjects\AlnProject\mysql\mysql-8.0.18-winx64\bin\mysqld.exe (mysqld 8.0.18) starting as process 14684
+2019-12-27T22:51:13.024686Z 0 [System] [MY-010229] [Server] Starting crash recovery...
+2019-12-27T22:51:13.033892Z 0 [System] [MY-010232] [Server] Crash recovery finished.
+2019-12-27T22:51:13.805913Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2019-12-27T22:51:13.921618Z 0 [System] [MY-010931] [Server] K:\MyProjects\AlnProject\mysql\mysql-8.0.18-winx64\bin\mysqld.exe: ready for connections. Version: '8.0.18'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2019-12-27T22:51:14.124913Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
+2019-12-27T22:51:39.482450Z 0 [ERROR] [MY-010083] [Server] --verbose is for use with --help; did you mean --log-error-verbosity?
+2019-12-27T22:51:39.482469Z 0 [Warning] [MY-010915] [Server] 'NO_ZERO_DATE', 'NO_ZERO_IN_DATE' and 'ERROR_FOR_DIVISION_BY_ZERO' sql modes should be used with strict mode. They will be merged with strict mode in a future release.
+2019-12-27T22:51:39.482548Z 0 [System] [MY-010116] [Server] K:\MyProjects\AlnProject\mysql\mysql-8.0.18-winx64\bin\mysqld.exe (mysqld 8.0.18) starting as process 22908
+2019-12-27T22:51:41.625877Z 0 [System] [MY-010229] [Server] Starting crash recovery...
+2019-12-27T22:51:41.633913Z 0 [System] [MY-010232] [Server] Crash recovery finished.
+2019-12-27T22:51:42.042963Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2019-12-27T22:51:42.083805Z 0 [System] [MY-010931] [Server] K:\MyProjects\AlnProject\mysql\mysql-8.0.18-winx64\bin\mysqld.exe: ready for connections. Version: '8.0.18'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2019-12-27T22:51:42.308968Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
+2019-12-27T22:51:56.887963Z 0 [ERROR] [MY-010083] [Server] --verbose is for use with --help; did you mean --log-error-verbosity?
+2019-12-27T22:51:56.887983Z 0 [Warning] [MY-010915] [Server] 'NO_ZERO_DATE', 'NO_ZERO_IN_DATE' and 'ERROR_FOR_DIVISION_BY_ZERO' sql modes should be used with strict mode. They will be merged with strict mode in a future release.
+2019-12-27T22:51:56.888058Z 0 [System] [MY-010116] [Server] K:\MyProjects\AlnProject\mysql\mysql-8.0.18-winx64\bin\mysqld.exe (mysqld 8.0.18) starting as process 24260
+2019-12-27T22:51:58.669533Z 0 [System] [MY-010229] [Server] Starting crash recovery...
+2019-12-27T22:51:58.677012Z 0 [System] [MY-010232] [Server] Crash recovery finished.
+2019-12-27T22:51:59.012339Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2019-12-27T22:51:59.112248Z 0 [System] [MY-010931] [Server] K:\MyProjects\AlnProject\mysql\mysql-8.0.18-winx64\bin\mysqld.exe: ready for connections. Version: '8.0.18'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2019-12-27T22:51:59.345432Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
