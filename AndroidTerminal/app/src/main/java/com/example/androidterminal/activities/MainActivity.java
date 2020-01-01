@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
     private GoogleMap mMapPredicted;
     private SupportMapFragment mapFragmentReal;
     private SupportMapFragment mapFragmentPredicted;
+    private TextView realMapTimerText;
+    private TextView predictedMapTimerText;
     private Marker currMarkReal;
     private List<Marker> markersReal = new ArrayList<>();
 
@@ -98,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
         connectionProgressBar = findViewById(R.id.connectionProgressBar);
         stopButton = findViewById(R.id.stopButton);
         startButton = findViewById(R.id.startButton);
+        realMapTimerText = findViewById(R.id.realMapTimer);
+        predictedMapTimerText = findViewById(R.id.predictedMapTimer);
 
         Utilities.toggleButtonActive(stopButton);
         connectionProgressBar.setVisibility(View.INVISIBLE);
@@ -155,6 +159,8 @@ public class MainActivity extends AppCompatActivity {
         markersReal.clear();
         currMarkReal = null;
         if (ess != null) ess.clearMapMarkers();
+        realMapTimerText.setText(" t=0 ");
+        predictedMapTimerText.setText(" t=1 ");
         mMapReal.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.96775 + 0.0005, 23.770075), 15));
         mMapPredicted.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.96775 + 0.0005, 23.770075), 15));
 
@@ -191,6 +197,7 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             esp.publishMessage(TextUtils.join(",", dataList.get(timerInt)));
 
+                            // draw map marker with info window:
                             if (currMarkReal != null) currMarkReal.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.dot_blue));
                             currMarkReal = mMapReal.addMarker(new MarkerOptions()
                                     .position(new LatLng(Double.parseDouble(dataList.get(timerInt)[2]), Double.parseDouble(dataList.get(timerInt)[3])))
@@ -215,6 +222,7 @@ public class MainActivity extends AppCompatActivity {
                         } else{
                             dataProgressBar.setProgress(timerInt + 1);
                         }
+                        realMapTimerText.setText(" t=" + timerInt + " ");
                         if (timerInt < runtime - 1) {
                             timerInt++;
                             runtimeText.setText("Transmitting datapoints...    |    " + timerInt + "/" + runtime);
@@ -265,7 +273,7 @@ public class MainActivity extends AppCompatActivity {
         }).start();
         if (ess == null) {
             try {
-                ess = new TerminalSubscriber(terminalName, prefs.getString("ipAddr", null), Integer.parseInt(prefs.getString("port", 1883 + "")), es2terminalTopic, this, mMapPredicted);
+                ess = new TerminalSubscriber(terminalName, prefs.getString("ipAddr", null), Integer.parseInt(prefs.getString("port", 1883 + "")), es2terminalTopic, this, mMapPredicted, predictedMapTimerText);
             } catch (MqttException e) {
                 Log.e(terminalName, "Failed to subscribe to MQTT topic '" + es2terminalTopic + "'");
                 e.printStackTrace();
@@ -403,23 +411,7 @@ public class MainActivity extends AppCompatActivity {
             public void onMapReady(GoogleMap googleMap) {
                 mMapReal = googleMap;
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.96775 + 0.0005, 23.770075), 15));
-
-//                Polyline polyline = mMapReal.addPolyline(new PolylineOptions()
-//                        .width(5)
-//                        .add(
-//                                new LatLng(Double.parseDouble(dataList.get(0)[2]), Double.parseDouble(dataList.get(0)[3])),
-//                                new LatLng(Double.parseDouble(dataList.get(1)[2]), Double.parseDouble(dataList.get(1)[3])),
-//                                new LatLng(Double.parseDouble(dataList.get(2)[2]), Double.parseDouble(dataList.get(2)[3])),
-//                                new LatLng(Double.parseDouble(dataList.get(3)[2]), Double.parseDouble(dataList.get(3)[3])),
-//                                new LatLng(Double.parseDouble(dataList.get(4)[2]), Double.parseDouble(dataList.get(4)[3])),
-//                                new LatLng(Double.parseDouble(dataList.get(5)[2]), Double.parseDouble(dataList.get(5)[3])),
-//                                new LatLng(Double.parseDouble(dataList.get(6)[2]), Double.parseDouble(dataList.get(6)[3])),
-//                                new LatLng(Double.parseDouble(dataList.get(7)[2]), Double.parseDouble(dataList.get(7)[3])),
-//                                new LatLng(Double.parseDouble(dataList.get(8)[2]), Double.parseDouble(dataList.get(8)[3])),
-//                                new LatLng(Double.parseDouble(dataList.get(9)[2]), Double.parseDouble(dataList.get(9)[3]))
-//                        ));
-//                        polyline.setStartCap(new RoundCap());
-//                        polyline.setColor(Color.CYAN);
+                googleMap.setPadding(0, 100, 0 ,0);
             }
         };
     }
@@ -430,6 +422,7 @@ public class MainActivity extends AppCompatActivity {
             public void onMapReady(GoogleMap googleMap) {
                 mMapPredicted = googleMap;
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(37.96775 + 0.0005, 23.770075), 15));
+                googleMap.setPadding(0, 100, 0 ,0);
             }
         };
     }

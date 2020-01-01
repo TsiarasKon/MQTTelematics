@@ -1,10 +1,9 @@
 package com.example.androidterminal.network;
 
 import android.app.Activity;
-import android.util.Log;
+import android.widget.TextView;
 
 import com.example.androidterminal.R;
-import com.example.androidterminal.utils.Utilities;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
@@ -29,15 +28,19 @@ public class TerminalSubscriber implements MqttCallback {
     private Activity activity;
     private GoogleMap mMapPredicted;
     private Marker currMarkPredicted;
+    private int predictedMapTimer;
+    private TextView predictedMapTimerText;
     private List<Marker> markersPredicted = new ArrayList<>();
 
-    public TerminalSubscriber(String clientId, String ipAddr, int port, String topic, Activity activity, GoogleMap mMapPredicted) throws MqttException {
+    public TerminalSubscriber(String clientId, String ipAddr, int port, String topic, Activity activity, GoogleMap mMapPredicted, TextView predictedMapTimerText) throws MqttException {
         this.clientId = clientId + "_sub";
         this.ipAddr = ipAddr;
         this.port = port;
         this.topic = topic;
         this.activity = activity;
         this.mMapPredicted = mMapPredicted;
+        this.predictedMapTimerText = predictedMapTimerText;
+        this.predictedMapTimer = 1;
         MqttConnectOptions conOpt = new MqttConnectOptions();
         conOpt.setCleanSession(true);
         this.client = new MqttClient(getBroker(), this.clientId, new MemoryPersistence());
@@ -71,6 +74,7 @@ public class TerminalSubscriber implements MqttCallback {
         }
         markersPredicted.clear();
         currMarkPredicted = null;
+        predictedMapTimer = 1;
     }
 
     @Override
@@ -85,8 +89,6 @@ public class TerminalSubscriber implements MqttCallback {
 
     @Override
     public void messageArrived(String topic, final MqttMessage message) {
-//        Log.i(clientId, String.format("%s [%s]: %s", Utilities.getCurrentTime(), topic, new String(message.getPayload())));
-
         activity.runOnUiThread(new Runnable(){
             public void run(){
                 String[] msgVals = (new String(message.getPayload())).split(",");
@@ -103,6 +105,7 @@ public class TerminalSubscriber implements MqttCallback {
                 markersPredicted.add(currMarkPredicted);
 //                mMapPredicted.animateCamera(CameraUpdateFactory.zoomBy(0.0000001f));
 
+                predictedMapTimerText.setText(" t=" + predictedMapTimer++ + " ");
             }
         });
     }
