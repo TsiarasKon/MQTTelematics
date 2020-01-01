@@ -1,7 +1,6 @@
 package network;
 
 import database.DBBridge;
-import database.DBDatapoint;
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import sumo_data.Predictor;

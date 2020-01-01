@@ -1,5 +1,4 @@
 import database.DBBridge;
-import database.DBDatapoint;
 import network.ESSubscriber;
 import network.EdgeServer;
 import sumo_data.Heatmap;
@@ -8,7 +7,6 @@ import sumo_data.SumoCsvReader;
 import sumo_data.SumoXml2Csv;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;

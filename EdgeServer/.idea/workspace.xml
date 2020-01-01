@@ -2,44 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e4330e5-b718-49ed-867a-90e00715f7b1" name="Default Changelist" comment="Heatmap generation improvements">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_5_1_48.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/database/DBBridge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/database/DBDatapoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AlnProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlnProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/DBBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/DBBridge.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/network/ESSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/ESSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network/EdgeServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/EdgeServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sumo_data/Heatmap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sumo_data/Heatmap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sumo_data/Predictor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sumo_data/Predictor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/DB_Readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/DB_Readme.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/logs/error_log.err" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/logs/error_log.err" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_1.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_1.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_10.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_10.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_2.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_2.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_3.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_3.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_4.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_4.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_5.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_5.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_6.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_6.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_7.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_7.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_8.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_8.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_9.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_9.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/DESKTOP-EFDTCJD.pid" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/DESKTOP-EFDTCJD.pid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/binlog.000001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/binlog.000002" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/binlog.000003" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/binlog.000004" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/binlog.000005" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/binlog.000005" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/binlog.index" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/binlog.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/edge_server_db/datapoints.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/edge_server_db/datapoints.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/edge_server_db/predicted_datapoints.ibd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/ib_logfile0" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/ib_logfile0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/ibdata1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/ibtmp1" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/ibtmp1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/mysql.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/mysql.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/undo_001" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/undo_001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/undo_002" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/undo_002" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sumo_data/Predictor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+            <state relative-caret-position="-1243">
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -62,8 +29,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="577">
-              <caret line="125" column="23" lean-forward="true" selection-start-line="125" selection-start-column="23" selection-end-line="125" selection-end-column="23" />
+            <state relative-caret-position="938">
+              <caret line="123" column="23" selection-start-line="123" selection-start-column="23" selection-end-line="123" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -74,8 +41,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sumo_data/Heatmap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1920">
-              <caret column="9" selection-start-column="9" selection-end-column="9" />
+            <state relative-caret-position="957">
+              <caret line="48" column="9" lean-forward="true" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/network/ESSubscriber.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="860">
-              <caret line="91" column="47" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
+            <state relative-caret-position="760">
+              <caret line="83" column="53" lean-forward="true" selection-start-line="83" selection-start-column="53" selection-end-line="83" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,20 +65,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/DBBridge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1580">
-              <caret line="166" column="49" selection-start-line="166" selection-start-column="49" selection-end-line="166" selection-end-column="49" />
+            <state relative-caret-position="323">
+              <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/database/DBDatapoint.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="14" column="104" selection-start-line="14" selection-start-column="104" selection-end-line="14" selection-end-column="104" />
             </state>
           </provider>
         </entry>
@@ -166,17 +124,19 @@
         <option value="$PROJECT_DIR$/src/DBBridge.java" />
         <option value="$PROJECT_DIR$/src/database/RealPredictedLatLons.java" />
         <option value="$PROJECT_DIR$/src/database/DBDatapoint.java" />
-        <option value="$PROJECT_DIR$/src/sumo_data/Predictor.java" />
         <option value="$PROJECT_DIR$/src/sumo_data/Heatmap.java" />
-        <option value="$PROJECT_DIR$/src/database/DBBridge.java" />
         <option value="$PROJECT_DIR$/src/network/ESSubscriber.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/predictions/DistanceCalculator.java" />
+        <option value="$PROJECT_DIR$/src/predictions/Predictor.java" />
+        <option value="$PROJECT_DIR$/src/database/DBBridge.java" />
+        <option value="$PROJECT_DIR$/src/sumo_data/Predictor.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1485" />
-    <option name="width" value="2366" />
+    <option name="width" value="2367" />
     <option name="height" value="2111" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -185,8 +145,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -243,7 +203,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577488691189" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577895237317" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/mysql-connector-java-5.1.48.jar!/" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -253,13 +213,6 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="K:\MyProjects\AlnProject\EdgeServer\res\xml" />
-      <recent name="K:\MyProjects\AlnProject\EdgeServer\res\images" />
-      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\EdgeServer" />
-      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\out" />
-      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
@@ -267,6 +220,13 @@
       <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\lib" />
       <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\src\main" />
       <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\res" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="K:\MyProjects\AlnProject\EdgeServer\res\xml" />
+      <recent name="K:\MyProjects\AlnProject\EdgeServer\res\images" />
+      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\EdgeServer" />
+      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject\out" />
+      <recent name="K:\!!!Mine\!+MyProjects\DI\AlnProject" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -345,7 +305,9 @@
       <workItem from="1575281417357" duration="469000" />
       <workItem from="1575457370595" duration="146000" />
       <workItem from="1577287569018" duration="6291000" />
-      <workItem from="1577443657666" duration="19216000" />
+      <workItem from="1577443657666" duration="19398000" />
+      <workItem from="1577488977805" duration="4000" />
+      <workItem from="1577887259809" duration="5416000" />
     </task>
     <task id="LOCAL-00001" summary="Xml2csv converter&#10;&#10;* lacks RSSI and throughput&#10;* commit includes provided resources">
       <created>1572287602872</created>
@@ -400,12 +362,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140465000" />
+    <option name="totallyTimeSpent" value="146067000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="990" y="0" width="1577" height="1407" extended-state="0" />
+    <frame x="990" y="0" width="1578" height="1407" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15688859" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16073781" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -570,10 +533,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/out/vehicle_27.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/saved.png" />
     <entry file="file://$PROJECT_DIR$/java-heat-chartt2.png" />
@@ -624,10 +587,10 @@
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/out/vehicle_26.csv">
-      <provider selected="true" editor-type-id="csv-text-editor" />
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
+      <provider selected="true" editor-type-id="csv-text-editor" />
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/org.eclipse.paho.client.mqttv3.jar!/org/eclipse/paho/client/mqttv3/internal/ClientComms.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -673,13 +636,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/database.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database.java" />
     <entry file="file://$PROJECT_DIR$/src/sumo_data/SumoXml2Csv.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
@@ -712,44 +669,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/predictions/DistanceCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
+          <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#3341#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DBDatapoint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="14" column="104" selection-start-line="14" selection-start-column="104" selection-end-line="14" selection-end-column="104" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sumo_data/Predictor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sumo_data/Heatmap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1920">
-          <caret column="9" selection-start-column="9" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/ESSubscriber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="860">
-          <caret line="91" column="47" selection-start-line="91" selection-start-column="47" selection-end-line="91" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state>
+          <caret column="17" lean-forward="true" selection-start-column="17" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/database/DBBridge.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1580">
-          <caret line="166" column="49" selection-start-line="166" selection-start-column="49" selection-end-line="166" selection-end-column="49" />
+        <state relative-caret-position="323">
+          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sumo_data/Predictor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1243">
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/network/ESSubscriber.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="83" column="53" lean-forward="true" selection-start-line="83" selection-start-column="53" selection-end-line="83" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sumo_data/Heatmap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="957">
+          <caret line="48" column="9" lean-forward="true" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -758,8 +726,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="125" column="23" lean-forward="true" selection-start-line="125" selection-start-column="23" selection-end-line="125" selection-end-column="23" />
+        <state relative-caret-position="938">
+          <caret line="123" column="23" selection-start-line="123" selection-start-column="23" selection-end-line="123" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
