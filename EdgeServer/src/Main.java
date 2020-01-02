@@ -1,8 +1,9 @@
 import database.DBBridge;
 import network.ESSubscriber;
 import network.EdgeServer;
+import predictions.PredictionErrorCalculator;
 import sumo_data.Heatmap;
-import sumo_data.Predictor;
+import predictions.Predictor;
 import sumo_data.SumoCsvReader;
 import sumo_data.SumoXml2Csv;
 
@@ -20,6 +21,7 @@ public class Main {
     private static final String baseMapPath;
     private static final String heatmapLegendPath;
     private static final String[] outputHeatmapPaths;
+    private static final String[] outputErrorChartPaths;
     private static final double min_lat;
     private static final double max_lat;
     private static final double min_lon;
@@ -45,6 +47,10 @@ public class Main {
                 "out/Heatmap_RSSI.png",
                 "out/Heatmap_Throughput.png"
         };
+        outputErrorChartPaths = new String[]{
+                "out/PredictionErrorChart_v26.jpeg",
+                "out/PredictionErrorChart_v27.jpeg"
+        };
         min_lat = 37.9668800;
         max_lat = 37.9686200;
         min_lon = 23.7647600;
@@ -61,6 +67,7 @@ public class Main {
             System.out.println(" -c : Convert XML files to CSV");
             System.out.println(" -g : Generate heatmaps from CSV files");
             System.out.println(" -s : Subscribe to vehicle MQTT topics - Mosquitto must already be running");
+            System.out.println(" -e : Calculate and visualize prediction errors");
             System.out.println(" -h : This help menu");
         }
 
@@ -114,16 +121,18 @@ public class Main {
                 vs26sub.disconnect();
                 vs27sub.disconnect();
                 System.out.println("Disconnected from '" + EdgeServer.getV2ESTopic(0) + "' and '" + EdgeServer.getV2ESTopic(1) + "'");
-
-//                List<DBDatapoint> list = db.getTerminalRealPredictedLatLons(terminalIds[0]);
-//                // TODO: visualize errors (check if null for first and null row!)
-//                list = db.getTerminalRealPredictedLatLons(terminalIds[1]);
-//                // TODO
             } catch (MqttException e) {
                 e.printStackTrace();
             } finally {
                 db.close();
             }
+            System.out.println();
         }
+
+        if (argsList.contains("-e")) {
+            new PredictionErrorCalculator(terminalIds[0]).calculateError(outputErrorChartPaths[0]);
+            new PredictionErrorCalculator(terminalIds[1]).calculateError(outputErrorChartPaths[1]);
+        }
+        System.exit(0);
     }
 }

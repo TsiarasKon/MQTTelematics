@@ -12,5 +12,6 @@
     <orderEntry type="library" name="jheatchart-0.6" level="project" />
     <orderEntry type="library" name="org.eclipse.paho.client.mqttv3" level="project" />
     <orderEntry type="library" name="mysql-connector-java-5.1.48" level="project" />
+    <orderEntry type="library" name="jfreechart-1.5.0" level="project" />
   </component>
 </module>

@@ -55,3 +55,17 @@
 2019-12-27T22:51:59.012339Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
 2019-12-27T22:51:59.112248Z 0 [System] [MY-010931] [Server] K:\MyProjects\AlnProject\mysql\mysql-8.0.18-winx64\bin\mysqld.exe: ready for connections. Version: '8.0.18'  socket: ''  port: 3306  MySQL Community Server - GPL.
 2019-12-27T22:51:59.345432Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
+2020-01-01T14:39:50.617992Z 0 [Warning] [MY-010915] [Server] 'NO_ZERO_DATE', 'NO_ZERO_IN_DATE' and 'ERROR_FOR_DIVISION_BY_ZERO' sql modes should be used with strict mode. They will be merged with strict mode in a future release.
+2020-01-01T14:39:50.624540Z 0 [System] [MY-010116] [Server] K:\MyProjects\AlnProject\mysql\mysql-8.0.18-winx64\bin\mysqld.exe (mysqld 8.0.18) starting as process 8976
+2020-01-01T14:39:53.518125Z 0 [System] [MY-010229] [Server] Starting crash recovery...
+2020-01-01T14:39:53.526317Z 0 [System] [MY-010232] [Server] Crash recovery finished.
+2020-01-01T14:39:54.083713Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2020-01-01T14:39:54.331143Z 0 [System] [MY-010931] [Server] K:\MyProjects\AlnProject\mysql\mysql-8.0.18-winx64\bin\mysqld.exe: ready for connections. Version: '8.0.18'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2020-01-01T14:39:54.396973Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060
+2020-01-02T15:51:43.932002Z 0 [Warning] [MY-010915] [Server] 'NO_ZERO_DATE', 'NO_ZERO_IN_DATE' and 'ERROR_FOR_DIVISION_BY_ZERO' sql modes should be used with strict mode. They will be merged with strict mode in a future release.
+2020-01-02T15:51:43.934040Z 0 [System] [MY-010116] [Server] K:\MyProjects\AlnProject\mysql\mysql-8.0.18-winx64\bin\mysqld.exe (mysqld 8.0.18) starting as process 9240
+2020-01-02T15:51:46.770653Z 0 [System] [MY-010229] [Server] Starting crash recovery...
+2020-01-02T15:51:46.778105Z 0 [System] [MY-010232] [Server] Crash recovery finished.
+2020-01-02T15:51:47.301193Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2020-01-02T15:51:47.698307Z 0 [System] [MY-010931] [Server] K:\MyProjects\AlnProject\mysql\mysql-8.0.18-winx64\bin\mysqld.exe: ready for connections. Version: '8.0.18'  socket: ''  port: 3306  MySQL Community Server - GPL.
+2020-01-02T15:51:47.929592Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060

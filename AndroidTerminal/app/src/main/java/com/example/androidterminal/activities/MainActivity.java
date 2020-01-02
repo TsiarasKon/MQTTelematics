@@ -50,7 +50,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
-    private final int terminalId = 1;   // !! Change this to 0/1 for vehicle26/vehicle27 !!
+    private final int terminalId = 0;   // !! Change this to 0/1 for vehicle26/vehicle27 !!
     private final String terminalName = (terminalId == 0) ? "v26Terminal" : "v27Terminal";
     private final String terminal2esTopic = (terminalId == 0) ? "v26_ES/topic" : "v27_ES/topic";
     private final String es2terminalTopic = (terminalId == 0) ? "ES_v26/topic" : "ES_v27/topic";        // unused for now
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
 
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
-        if (prefs.getString("runtime", null) == null) {
+        if (prefs.getString("runtime", null) == null || Integer.valueOf(prefs.getString("runtime", null)) > maxRuntime) {
             editor.putString("runtime", Integer.toString(maxRuntime));
         }
         editor.putString("maxRuntime", Integer.toString(maxRuntime));

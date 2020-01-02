@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBBridge {
-    final private String dbURL = "jdbc:mysql://localhost:3306/edge_server_db?useSSL=false";
+    final private String dbURL = "jdbc:mysql://localhost:3306/edge_server_db?useSSL=false&allowPublicKeyRetrieval=true";
     final private String dbUser = "root";
     final private String dbPassword = "root";
 
@@ -33,29 +33,6 @@ public class DBBridge {
             }
         }
     }
-
-//    public boolean insertDatapoint(DBDatapoint datapoint) {
-//        if (connection == null) return false;
-//        String insertString = "INSERT INTO datpoints VALUES (default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-//        try {
-//            PreparedStatement statement = connection.prepareStatement(insertString);
-//            statement.setDouble(1, datapoint.timestep);
-//            statement.setInt(2, datapoint.device_id);
-//            statement.setDouble(3, datapoint.real_lat);
-//            statement.setDouble(4, datapoint.real_long);
-//            statement.setDouble(5, datapoint.predicted_lat);
-//            statement.setDouble(6, datapoint.predicted_long);
-//            statement.setDouble(7, datapoint.real_RSSI);
-//            statement.setDouble(8, datapoint.real_throughput);
-//            statement.setDouble(9, datapoint.predicted_RSSI);
-//            statement.setDouble(10, datapoint.predicted_throughput);
-//            statement.executeUpdate();
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//        return true;
-//    }
 
     public boolean insertReal(double timestep, int device_id, double real_lat, double real_long, double real_RSSI, double real_throughput) {
         if (connection == null) return false;
@@ -114,41 +91,32 @@ public class DBBridge {
         return true;
     }
 
-//    public List<DBDatapoint> getTerminalRealPredictedLatLons(int terminalId) {
-//        if (connection == null) return null;
-//        String query = "SELECT * FROM datapoints WHERE device_id = ?;";
-//        List<DBDatapoint> list = null;
-//        try {
-//            PreparedStatement statement = connection.prepareStatement(query);
-//            statement.setInt(1, terminalId);
-//            ResultSet resultSet = statement.executeQuery();
-//            list = new ArrayList<>();
-//            while (resultSet.next()) {
-//                DBDatapoint newDatapoint = new DBDatapoint(
-//                        resultSet.getDouble("real_lat"),
-//                        resultSet.getDouble("real_long"),
-//                        resultSet.getDouble("predicted_lat"),
-//                        resultSet.getDouble("predicted_long"));
-//                list.add(newDatapoint);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//        return list;
-//    }
+    public boolean datapointExists(int terminalId, double timestep) {
+        if (connection == null) return false;
+        String query = "SELECT * FROM datapoints WHERE device_id = ? AND timestep = ?;";
+        try {
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, terminalId);
+            statement.setDouble(2, timestep);
+            ResultSet resultSet = statement.executeQuery();
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
-    public List<DBDatapoint> getTerminalRealPredictedLatLons(int terminalId) {
+    public List<RealPredictedLatLon> getTerminalRealPredictedLatLons(int terminalId) {
         if (connection == null) return null;
-        String query = "SELECT * FROM datapoints WHERE device_id = ?;";
-        List<DBDatapoint> list = null;
+        String query = "SELECT real_lat, real_long, predicted_lat, predicted_long FROM datapoints WHERE device_id = ?;";
+        List<RealPredictedLatLon> list = null;
         try {
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, terminalId);
             ResultSet resultSet = statement.executeQuery();
             list = new ArrayList<>();
             while (resultSet.next()) {
-                DBDatapoint newDatapoint = new DBDatapoint(
+                RealPredictedLatLon newDatapoint = new RealPredictedLatLon(
                         resultSet.getDouble("real_lat"),
                         resultSet.getDouble("real_long"),
                         resultSet.getDouble("predicted_lat"),

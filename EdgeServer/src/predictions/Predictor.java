@@ -1,4 +1,6 @@
-package sumo_data;
+package predictions;
+
+import sumo_data.SumoCsvReader;
 
 import static java.lang.Math.*;
 
@@ -44,8 +46,6 @@ public class Predictor {
         double delta = (1 * speed) / earthR;
         predictedLat = toDegrees( asin(sin(latRads) * cos(delta) + cos(latRads) * sin(delta) * cos(angleRads)) );
         predictedLon = toDegrees( lonRads + atan2(sin(angleRads) * sin(delta) * cos(latRads), cos(delta) - sin(latRads) * sin(predictedLat)) );
-//        System.out.println("New: " + predictedLat + ',' + predictedLon);
-//        System.out.println("dist: " + distance(lat, lon, predictedLat, predictedLon, "K"));
     }
 
 

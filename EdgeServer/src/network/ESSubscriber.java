@@ -3,7 +3,7 @@ package network;
 import database.DBBridge;
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
-import sumo_data.Predictor;
+import predictions.Predictor;
 
 public class ESSubscriber implements MqttCallback {
 
@@ -75,9 +75,11 @@ public class ESSubscriber implements MqttCallback {
             db.updateWithReal(Double.parseDouble(msgVals[0]), Integer.parseInt(msgVals[1]), Double.parseDouble(msgVals[2]),
                     Double.parseDouble(msgVals[3]), Double.parseDouble(msgVals[6]), Double.parseDouble(msgVals[7]));
         } else {
-            db.insertReal(Double.parseDouble(msgVals[0]), Integer.parseInt(msgVals[1]), Double.parseDouble(msgVals[2]),
-                    Double.parseDouble(msgVals[3]), Double.parseDouble(msgVals[6]), Double.parseDouble(msgVals[7]));
-            firstArrived = true;
+            if (! db.datapointExists(Integer.parseInt(msgVals[1]), Double.parseDouble(msgVals[0])) ) {
+                db.insertReal(Double.parseDouble(msgVals[0]), Integer.parseInt(msgVals[1]), Double.parseDouble(msgVals[2]),
+                        Double.parseDouble(msgVals[3]), Double.parseDouble(msgVals[6]), Double.parseDouble(msgVals[7]));
+                firstArrived = true;
+            }
         }
         String predictionStr = (Double.parseDouble(msgVals[0]) + 1) + "," + predictor.makePredictionFor(Double.parseDouble(msgVals[2]),
                 Double.parseDouble(msgVals[3]), Double.parseDouble(msgVals[4]), Double.parseDouble(msgVals[5]));
@@ -89,7 +91,9 @@ public class ESSubscriber implements MqttCallback {
         }
         System.out.println(String.format("%s [%s] - Sent: %s", EdgeServer.getCurrentTime(), pubTopic, predictionStr));
         String[] predictionVals = predictionStr.split(",");
-        db.insertPredicted(Double.parseDouble(predictionVals[0]), terminalId, Double.parseDouble(predictionVals[1]),
-                Double.parseDouble(predictionVals[2]), Double.parseDouble(predictionVals[3]), Double.parseDouble(predictionVals[4]));
+        if (! db.datapointExists(terminalId, Double.parseDouble(predictionVals[0])) ) {
+            db.insertPredicted(Double.parseDouble(predictionVals[0]), terminalId, Double.parseDouble(predictionVals[1]),
+                    Double.parseDouble(predictionVals[2]), Double.parseDouble(predictionVals[3]), Double.parseDouble(predictionVals[4]));
+        }
     }
 }
