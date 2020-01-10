@@ -11,16 +11,18 @@ public class DBBridge {
 
     private Connection connection = null;
 
-    public DBBridge() {
+    public DBBridge() throws ClassNotFoundException, SQLException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
         } catch (ClassNotFoundException e) {
             System.err.println("JDBC Driver not found!");
             e.printStackTrace();
+            throw e;
         } catch (SQLException e) {
-            System.err.println("Connection to the database failed!");
-            e.printStackTrace();
+//            System.err.println("Connection to the database failed!");
+//            e.printStackTrace();
+            throw e;
         }
     }
 

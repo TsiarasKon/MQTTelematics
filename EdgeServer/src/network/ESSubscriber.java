@@ -5,6 +5,8 @@ import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import predictions.Predictor;
 
+import java.sql.SQLException;
+
 public class ESSubscriber implements MqttCallback {
 
     private final String clientId;
@@ -32,8 +34,14 @@ public class ESSubscriber implements MqttCallback {
         this.client.setCallback(this);
         this.client.connect(conOpt);
         this.client.subscribe(this.subTopic, qos);
-        this.db = new DBBridge();
         this.firstArrived = false;
+        try {
+            db = new DBBridge();
+        } catch (ClassNotFoundException | SQLException e) {
+//            System.err.println("Database connection failed - DB may be offline");
+//            System.err.println("Edge Server will receive and send messages without inserting them into the database");
+            db = null;
+        }
     }
 
     public void sendMessage(String payload) throws MqttException {
@@ -43,12 +51,14 @@ public class ESSubscriber implements MqttCallback {
     }
 
     public void disconnect() {
-        try {
-            client.disconnect();
-            db.close();
-        } catch (MqttException e) {
-            System.err.println(clientId + " failed to disconnect");
-            e.printStackTrace();
+        if (db != null) {
+            try {
+                client.disconnect();
+                db.close();
+            } catch (MqttException e) {
+                System.err.println(clientId + " failed to disconnect");
+                e.printStackTrace();
+            }
         }
     }
 
@@ -71,14 +81,16 @@ public class ESSubscriber implements MqttCallback {
         }
         System.out.println(String.format("%s [%s] - Received: %s", EdgeServer.getCurrentTime(), subTopic, msgResult));
         String[] msgVals = msgResult.split(",");
-        if (firstArrived) {
-            db.updateWithReal(Double.parseDouble(msgVals[0]), Integer.parseInt(msgVals[1]), Double.parseDouble(msgVals[2]),
-                    Double.parseDouble(msgVals[3]), Double.parseDouble(msgVals[6]), Double.parseDouble(msgVals[7]));
-        } else {
-            if (! db.datapointExists(Integer.parseInt(msgVals[1]), Double.parseDouble(msgVals[0])) ) {
-                db.insertReal(Double.parseDouble(msgVals[0]), Integer.parseInt(msgVals[1]), Double.parseDouble(msgVals[2]),
+        if (db != null) {
+            if (firstArrived) {
+                db.updateWithReal(Double.parseDouble(msgVals[0]), Integer.parseInt(msgVals[1]), Double.parseDouble(msgVals[2]),
                         Double.parseDouble(msgVals[3]), Double.parseDouble(msgVals[6]), Double.parseDouble(msgVals[7]));
-                firstArrived = true;
+            } else {
+                if (!db.datapointExists(Integer.parseInt(msgVals[1]), Double.parseDouble(msgVals[0]))) {
+                    db.insertReal(Double.parseDouble(msgVals[0]), Integer.parseInt(msgVals[1]), Double.parseDouble(msgVals[2]),
+                            Double.parseDouble(msgVals[3]), Double.parseDouble(msgVals[6]), Double.parseDouble(msgVals[7]));
+                    firstArrived = true;
+                }
             }
         }
         String predictionStr = (Double.parseDouble(msgVals[0]) + 1) + "," + predictor.makePredictionFor(Double.parseDouble(msgVals[2]),
@@ -91,7 +103,7 @@ public class ESSubscriber implements MqttCallback {
         }
         System.out.println(String.format("%s [%s] - Sent: %s", EdgeServer.getCurrentTime(), pubTopic, predictionStr));
         String[] predictionVals = predictionStr.split(",");
-        if (! db.datapointExists(terminalId, Double.parseDouble(predictionVals[0])) ) {
+        if (db != null && !db.datapointExists(terminalId, Double.parseDouble(predictionVals[0]))) {
             db.insertPredicted(Double.parseDouble(predictionVals[0]), terminalId, Double.parseDouble(predictionVals[1]),
                     Double.parseDouble(predictionVals[2]), Double.parseDouble(predictionVals[3]), Double.parseDouble(predictionVals[4]));
         }

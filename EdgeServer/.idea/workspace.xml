@@ -2,17 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e4330e5-b718-49ed-867a-90e00715f7b1" name="Default Changelist" comment="Heatmap generation improvements">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/jfreechart_1_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/jfreechart-1.5.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/predictions/PredictionErrorCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/utils/AsyncConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/utils/AsyncConnect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AlnProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/AlnProject.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/database/DBBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/DBBridge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/DBDatapoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/RealPredictedLatLon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/network/ESSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/ESSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sumo_data/Predictor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/predictions/Predictor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/predictions/PredictionErrorCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/predictions/PredictionErrorCalculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Readme.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Readme.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mysql/logs/error_log.err" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/logs/error_log.err" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_1.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_1.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_10.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_10.ibt" afterDir="false" />
@@ -25,7 +23,6 @@
       <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_8.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_8.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_9.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_9.ibt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mysql/mydb/DESKTOP-EFDTCJD.pid" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/DESKTOP-EFDTCJD.pid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/binlog.000008" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/binlog.000008" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mysql/mydb/binlog.index" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/binlog.index" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mysql/mydb/edge_server_db/datapoints.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/edge_server_db/datapoints.ibd" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../mysql/mydb/ib_logfile0" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/ib_logfile0" afterDir="false" />
@@ -47,7 +44,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/predictions/Predictor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-943">
+            <state relative-caret-position="80">
               <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -56,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="128" column="33" lean-forward="true" selection-start-line="128" selection-start-column="33" selection-end-line="128" selection-end-column="33" />
+            <state relative-caret-position="534">
+              <caret line="118" column="122" selection-start-line="118" selection-start-column="122" selection-end-line="118" selection-end-column="122" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -68,35 +65,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/predictions/PredictionErrorCalculator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+            <state relative-caret-position="1320">
+              <caret line="84" column="51" selection-start-line="84" selection-start-column="51" selection-end-line="84" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#145#146#0" expanded="true" />
-                <element signature="e#189#190#0" expanded="true" />
               </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PredictionErrorChart_v26.jpeg">
-          <provider selected="true" editor-type-id="images" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PredictionErrorChart_v27.jpeg">
-          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/network/ESSubscriber.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="723">
-              <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+            <state relative-caret-position="740">
+              <caret line="42" column="22" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,8 +92,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/database/DBBridge.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
-              <caret line="95" column="88" selection-start-line="95" selection-start-column="88" selection-end-line="95" selection-end-column="88" />
+            <state relative-caret-position="460">
+              <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -135,6 +120,8 @@
       <find>predicted_lon</find>
       <find>double</find>
       <find>Double</find>
+      <find>new DBBridge</find>
+      <find>db</find>
     </findStrings>
     <replaceStrings>
       <replace>real_long</replace>
@@ -174,19 +161,19 @@
         <option value="$PROJECT_DIR$/src/database/DBDatapoint.java" />
         <option value="$PROJECT_DIR$/src/sumo_data/Predictor.java" />
         <option value="$PROJECT_DIR$/src/database/RealPredictedLatLon.java" />
-        <option value="$PROJECT_DIR$/src/database/DBBridge.java" />
-        <option value="$PROJECT_DIR$/src/network/ESSubscriber.java" />
         <option value="$PROJECT_DIR$/src/predictions.java" />
         <option value="$PROJECT_DIR$/src/predictions/Predictor.java" />
+        <option value="$PROJECT_DIR$/src/database/DBBridge.java" />
+        <option value="$PROJECT_DIR$/src/network/ESSubscriber.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/predictions/PredictionErrorCalculator.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1624" />
+    <option name="x" value="1623" />
     <option name="width" value="2226" />
-    <option name="height" value="2111" />
+    <option name="height" value="2112" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -194,8 +181,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -258,12 +243,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577999238701" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1578668471367" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/jfreechart-1.5.0.jar!/" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -324,7 +311,7 @@
     <configuration name="ServerOnly" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="AlnProject" />
-      <option name="PROGRAM_PARAMETERS" value="-s -e" />
+      <option name="PROGRAM_PARAMETERS" value="-s" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -378,7 +365,9 @@
       <workItem from="1577443657666" duration="19398000" />
       <workItem from="1577488977805" duration="4000" />
       <workItem from="1577887259809" duration="11415000" />
-      <workItem from="1577969400976" duration="13528000" />
+      <workItem from="1577969400976" duration="15558000" />
+      <workItem from="1578660973042" duration="3469000" />
+      <workItem from="1578669474115" duration="599000" />
     </task>
     <task id="LOCAL-00001" summary="Xml2csv converter&#10;&#10;* lacks RSSI and throughput&#10;* commit includes provided resources">
       <created>1572287602872</created>
@@ -433,13 +422,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="165594000" />
+    <option name="totallyTimeSpent" value="171692000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1083" y="0" width="1484" height="1407" extended-state="0" />
+    <frame x="1082" y="0" width="1484" height="1408" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17345506" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17837079" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -448,7 +437,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32941177" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32156864" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32053292" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3990647" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -552,8 +541,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/EdgeServer/out/java-heat-chart5.png" />
-    <entry file="file://$PROJECT_DIR$/EdgeServer/out/java-heat-chart3.png" />
     <entry file="file://$PROJECT_DIR$/EdgeServer/out/java-heat-chart1.png" />
     <entry file="file://$PROJECT_DIR$/EdgeServer/out/java-heat-chart.png" />
     <entry file="jar://$PROJECT_DIR$/lib/jheatchart-0.6/jheatchart-0.6.jar!/org/tc33/jheatchart/HeatChart.class">
@@ -748,39 +735,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/network/ESSubscriber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="723">
-          <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/predictions.java" />
+    <entry file="file://$PROJECT_DIR$/LineChart.jpeg" />
+    <entry file="file://$PROJECT_DIR$/PredictionErrorChart_v27.jpeg" />
+    <entry file="file://$PROJECT_DIR$/PredictionErrorChart_v26.jpeg" />
+    <entry file="file://$PROJECT_DIR$/out/PredictionErrorChart_v27.jpeg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/database/DBBridge.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="95" column="88" selection-start-line="95" selection-start-column="88" selection-end-line="95" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LineChart.jpeg">
+    <entry file="file://$PROJECT_DIR$/out/PredictionErrorChart_v26.jpeg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/predictions/Predictor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-943">
+        <state relative-caret-position="80">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -788,30 +755,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PredictionErrorChart_v27.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/predictions/PredictionErrorCalculator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="128" column="33" lean-forward="true" selection-start-line="128" selection-start-column="33" selection-end-line="128" selection-end-column="33" />
+        <state relative-caret-position="1320">
+          <caret line="84" column="51" selection-start-line="84" selection-start-column="51" selection-end-line="84" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PredictionErrorChart_v26.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/predictions/PredictionErrorCalculator.java">
+    <entry file="file://$PROJECT_DIR$/src/network/ESSubscriber.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+        <state relative-caret-position="740">
+          <caret line="42" column="22" selection-start-line="42" selection-start-column="22" selection-end-line="42" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#145#146#0" expanded="true" />
-            <element signature="e#189#190#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/database/DBBridge.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="534">
+          <caret line="118" column="122" selection-start-line="118" selection-start-column="122" selection-end-line="118" selection-end-column="122" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

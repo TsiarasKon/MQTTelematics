@@ -8,6 +8,7 @@ import sumo_data.SumoCsvReader;
 import sumo_data.SumoXml2Csv;
 
 import java.io.File;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -109,13 +110,20 @@ public class Main {
             Predictor v27Predictor = new Predictor(min_lat, max_lat, min_lon, max_lon, heatmapHeightCells, heatmapWidthCells, sumoReader.getRssiCellMap(), sumoReader.getThroughputCellMap());
 
             // clear db first
-            DBBridge db = new DBBridge();
-            db.truncateAllDatapoints();
+            DBBridge db;
+            try {
+                db = new DBBridge();
+                db.truncateAllDatapoints();
+            } catch (ClassNotFoundException | SQLException e) {
+                System.err.println("Database connection failed - DB may be offline");
+                System.err.println("Edge Server will receive and send messages without inserting them into the database");
+                db = null;
+            }
 
             try {
-                System.out.println("Listening to '" + EdgeServer.getV2ESTopic(0) + "' and '" + EdgeServer.getV2ESTopic(1) + "'");
                 ESSubscriber vs26sub = new ESSubscriber("ES_V26", terminalIds[0], EdgeServer.getV2ESTopic(0), EdgeServer.getES2VTopic(0), v26Predictor);
                 ESSubscriber vs27sub = new ESSubscriber("ES_V27", terminalIds[1], EdgeServer.getV2ESTopic(1), EdgeServer.getES2VTopic(1), v27Predictor);
+                System.out.println("Listening to '" + EdgeServer.getV2ESTopic(0) + "' and '" + EdgeServer.getV2ESTopic(1) + "'");
                 System.out.println("Press Enter to terminate the Edge Server ...");
                 new Scanner(System.in).nextLine();
                 vs26sub.disconnect();
@@ -124,7 +132,7 @@ public class Main {
             } catch (MqttException e) {
                 e.printStackTrace();
             } finally {
-                db.close();
+                if (db != null) db.close();
             }
             System.out.println();
         }

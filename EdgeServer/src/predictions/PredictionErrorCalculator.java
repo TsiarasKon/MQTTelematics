@@ -13,6 +13,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -25,7 +26,13 @@ public class PredictionErrorCalculator {
     }
 
     public void calculateError(String outputChartPath) {
-        DBBridge db = new DBBridge();
+        DBBridge db;
+        try {
+            db = new DBBridge();
+        } catch (ClassNotFoundException | SQLException e) {
+            System.err.println("Database connection failed - DB may be offline");
+            return;
+        }
         List<RealPredictedLatLon> list = db.getTerminalRealPredictedLatLons(terminalId);
         db.close();
         List<Double> errorList = new ArrayList<>();

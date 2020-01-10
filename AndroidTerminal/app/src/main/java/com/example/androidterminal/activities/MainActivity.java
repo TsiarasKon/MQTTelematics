@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         connectedRunnable = new Runnable() {
             @Override
             public void run() {
-                if (esp == null) {
+                if (esp == null || ess == null) {
                     Log.i(terminalName, "Failed to connect");
                     Toast.makeText(getBaseContext(), "Could not connect to server\nMaybe it's offline?", Toast.LENGTH_LONG).show();
                     Utilities.toggleButtonActive(startButton);
@@ -259,27 +259,35 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        Log.i(terminalName, "Trying to connect ...");
-        asyncConnect = new AsyncConnect(this, connectionProgressBar, outterHandler, terminalName, prefs.getString("ipAddr", null), Integer.parseInt(prefs.getString("port", 1883+"")), terminal2esTopic);
-        asyncConnect.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-        new Thread(new Runnable() {
-            public void run() {
-                try {
-                    esp = asyncConnect.get();
-                } catch (ExecutionException | InterruptedException e) {
-                    e.printStackTrace();
+        if (esp == null || ess == null) {       // no reason to reconnect if already connected
+            Log.i(terminalName, "Trying to connect ...");
+            asyncConnect = new AsyncConnect(this, connectionProgressBar, outterHandler, terminalName,
+                    prefs.getString("ipAddr", null), Integer.parseInt(prefs.getString("port", 1883 + "")),
+                    terminal2esTopic, es2terminalTopic, mMapPredicted, predictedMapTimerText);
+            asyncConnect.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+            new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        esp = asyncConnect.get().first;
+                        ess = asyncConnect.get().second;
+                    } catch (ExecutionException | InterruptedException | NullPointerException e) {
+                        Log.e(terminalName, "Failed to connect to MQTT topics - Edge Server may be offline");
+                        e.printStackTrace();
+                    }
                 }
-            }
-        }).start();
-        if (ess == null) {
-            try {
-                ess = new TerminalSubscriber(terminalName, prefs.getString("ipAddr", null), Integer.parseInt(prefs.getString("port", 1883 + "")), es2terminalTopic, this, mMapPredicted, predictedMapTimerText);
-            } catch (MqttException e) {
-                Log.e(terminalName, "Failed to subscribe to MQTT topic '" + es2terminalTopic + "'");
-                e.printStackTrace();
-            }
+            }).start();
+//        if (ess == null) {
+//            try {
+//                ess = new TerminalSubscriber(terminalName, prefs.getString("ipAddr", null), Integer.parseInt(prefs.getString("port", 1883 + "")), es2terminalTopic, this, mMapPredicted, predictedMapTimerText);
+//            } catch (MqttException e) {
+//                Log.e(terminalName, "Failed to subscribe to MQTT topic '" + es2terminalTopic + "'");
+//                e.printStackTrace();
+//            }
+//        }
+            outterHandler.postDelayed(connectedRunnable, 10000);    // will be resumed early if connected
+        } else {
+            outterHandler.post(connectedRunnable);
         }
-        outterHandler.postDelayed(connectedRunnable, 10000);    // will be resumed early if connected
     }
 
     public void stopTransmission(View view) {
