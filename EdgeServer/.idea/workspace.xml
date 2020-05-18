@@ -1,37 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2e4330e5-b718-49ed-867a-90e00715f7b1" name="Default Changelist" comment="Heatmap generation improvements">
-      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/activities/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/utils/AsyncConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/../AndroidTerminal/app/src/main/java/com/example/androidterminal/utils/AsyncConnect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/DBBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/DBBridge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network/ESSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/network/ESSubscriber.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/predictions/PredictionErrorCalculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/predictions/PredictionErrorCalculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Readme.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Readme.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/logs/error_log.err" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/logs/error_log.err" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_1.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_1.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_10.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_10.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_2.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_2.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_3.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_3.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_4.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_4.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_5.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_5.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_6.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_6.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_7.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_7.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_8.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_8.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_9.ibt" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/#innodb_temp/temp_9.ibt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/DESKTOP-EFDTCJD.pid" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/DESKTOP-EFDTCJD.pid" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/binlog.index" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/binlog.index" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/edge_server_db/datapoints.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/edge_server_db/datapoints.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/ib_logfile0" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/ib_logfile0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/ibdata1" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/ibdata1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/ibtmp1" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/ibtmp1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/mysql.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/mysql.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/undo_001" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/undo_001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mysql/mydb/undo_002" beforeDir="false" afterPath="$PROJECT_DIR$/../mysql/mydb/undo_002" afterDir="false" />
-    </list>
+    <list default="true" id="2e4330e5-b718-49ed-867a-90e00715f7b1" name="Default Changelist" comment="Heatmap generation improvements" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -367,7 +337,7 @@
       <workItem from="1577887259809" duration="11415000" />
       <workItem from="1577969400976" duration="15558000" />
       <workItem from="1578660973042" duration="3469000" />
-      <workItem from="1578669474115" duration="599000" />
+      <workItem from="1578669474115" duration="1198000" />
     </task>
     <task id="LOCAL-00001" summary="Xml2csv converter&#10;&#10;* lacks RSSI and throughput&#10;* commit includes provided resources">
       <created>1572287602872</created>
@@ -422,11 +392,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171692000" />
+    <option name="totallyTimeSpent" value="172291000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1082" y="0" width="1484" height="1408" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17837079" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
